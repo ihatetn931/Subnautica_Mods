@@ -1,0 +1,13 @@
+{
+  "Id": "WaterFoodHotkey",
+  "DisplayName": "WaterFoodHotkeyBZ",
+  "Author": "ihatetn931",
+  "Version": "1.0.2",
+  "Enable": true,
+  "Game": "BelowZero",
+  "AssemblyName": "WaterFoodHotkeyBZ.dll",
+  "Dependencies": ["SMLHelper"],
+  "LoadAfter": ["SMLHelper"],
+  "EntryMethod": "WaterFoodHotkey.MainPatch.FirstStart",
+  "Config": {}
+}

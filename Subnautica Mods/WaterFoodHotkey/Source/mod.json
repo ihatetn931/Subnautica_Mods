@@ -1,0 +1,11 @@
+{
+  "Id": "WaterFoodHotkey",
+  "DisplayName": "Hotkey for food and water",
+  "Author": "ihatetn931",
+  "Version": "1.0.3",
+  "Requires": ["0Harmony.dll" ],
+  "Enable": true,
+  "AssemblyName": "WaterFoodHotkey.dll",
+  "EntryMethod": "WaterFoodHotkey.MainPatch.firstStart",
+  "Config": {}
+}

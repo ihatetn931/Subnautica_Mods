@@ -1,0 +1,13 @@
+﻿{
+  "Id": "DockingLightsToggle",
+  "DisplayName": "DockLightsToggle",
+  "Author": "ihatetn931",
+  "Version": "1.0.2",
+  "Requires": [ "" ],
+  "Enable": true,
+  "Game": "BelowZero",
+  "AssemblyName": "DockLightsToggle.dll",
+  "Dependencies": [],
+  "EntryMethod": "DockLightsToggle.MainPatch.FirstStart",
+  "Config": {}
+}
