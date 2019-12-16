@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace WaterFoodHotkey.Patches
+namespace WaterFoodHotkeyBZ.Patches
 {
     class Patch_uGUI_InputGroup
     {

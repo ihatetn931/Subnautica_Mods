@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterFoodHotkeyBZ", "SubnauticaBelowzeroMods\WaterFoodHotkey\Source\WaterFoodHotkeyBZ.csproj", "{610DD461-6353-4909-ADA4-BCBC9B3A6C37}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockLightsToggleBZ", "SubnauticaBelowzeroMods\DockLightsToggle\Source\DockLightsToggleBZ.csproj", "{3ECA0C8E-1823-489E-A235-73922AA03ED0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterFlashLight", "SubnauticaBelowzeroMods\BetterFlashLight\Source\BetterFlashLight\BetterFlashLight.csproj", "{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3ECA0C8E-1823-489E-A235-73922AA03ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ECA0C8E-1823-489E-A235-73922AA03ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ECA0C8E-1823-489E-A235-73922AA03ED0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

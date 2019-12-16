@@ -3,7 +3,7 @@ using Harmony;
 using SMLHelper.V2.Handlers;
 using UnityEngine;
 
-namespace WaterFoodHotkey
+namespace WaterFoodHotkeyBZ
 {
     public static class MainPatch
     {

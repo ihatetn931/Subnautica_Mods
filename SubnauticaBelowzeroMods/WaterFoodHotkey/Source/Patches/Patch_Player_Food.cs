@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace WaterFoodHotkey.Patches
+namespace WaterFoodHotkeyBZ.Patches
 {
     class PlayerFood_Patch
     {
@@ -83,7 +83,7 @@ namespace WaterFoodHotkey.Patches
             }
             else if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == true && !MainPatch.EditNameCheck)
             {
-                if (GameModeUtils.IsOptionActive(GameModeOption.Freedom) || GameModeUtils.IsOptionActive(GameModeOption.Creative))
+                if (!GameModeUtils.IsOptionActive(GameModeOption.Survival))
                 {
                     if (Config.TextValue == 0)
                     {

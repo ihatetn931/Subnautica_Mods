@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace WaterFoodHotkey.Patches
+namespace WaterFoodHotkeyBZ.Patches
 {
     public static class PlayerWater_Patch
     {
         public static void Patch_Player_Water()
         {
-
+            //int[] TechTypes = new int[] { 4500, 808, 4501, 4516 };
             /*bool consoleOpened = (bool)typeof(DevConsole).GetField("state", BindingFlags.NonPublic |
             BindingFlags.Instance).GetValue(typeof(DevConsole).GetField("instance", BindingFlags.NonPublic |
             BindingFlags.Static).GetValue(null));*/
@@ -36,7 +36,7 @@ namespace WaterFoodHotkey.Patches
             }
             else if (Input.GetKeyDown(Config.WaterHotKey) && Config.ToggleWaterHotKey == true && !MainPatch.EditNameCheck)
             {
-                if (GameModeUtils.IsOptionActive(GameModeOption.Freedom) || GameModeUtils.IsOptionActive(GameModeOption.Creative) || GameModeUtils.IsOptionActive(GameModeOption.NoSurvival))
+                if (!GameModeUtils.IsOptionActive(GameModeOption.Survival))
                 {
                     if (Config.TextValue == 0)
                     {
@@ -49,6 +49,7 @@ namespace WaterFoodHotkey.Patches
                 }
                 else if (Player.main.GetComponent<Survival>().water <= Config.WaterPercentage)
                 {
+                    
                     if (filteredWater != null)
                     {
                         pInventory.ExecuteItemAction(ItemAction.Eat, filteredWater.First());

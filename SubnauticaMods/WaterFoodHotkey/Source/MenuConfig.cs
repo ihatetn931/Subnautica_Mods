@@ -54,6 +54,7 @@ namespace WaterFoodHotkey
                 PlayerPrefs.SetInt("TextValue", e.Index);
             }
         }
+
         public void Options_KeybindChanged(object sender, KeybindChangedEventArgs e)
         {
             if (e.Id == "waterhotkey")
@@ -67,6 +68,7 @@ namespace WaterFoodHotkey
                 PlayerPrefsExtra.SetKeyCode("FoodHotKey", e.Key);
             }
         }
+
         public void Options_SliderChanged(object sender, SliderChangedEventArgs e)
         {
             if (e.Id == "waterpercentage")
@@ -80,6 +82,7 @@ namespace WaterFoodHotkey
                 PlayerPrefs.SetFloat("FoodPercentage", e.Value);
             }
         }
+
         public void Options_ToggleChanged(object sender, ToggleChangedEventArgs e)
         {
             if (e.Id == "togglewaterhotkey")
@@ -96,7 +99,6 @@ namespace WaterFoodHotkey
 
         public override void BuildModOptions()
         {
-
             AddKeybindOption("waterhotkey", "Water Hotkey", GameInput.Device.Keyboard, Config.WaterHotKey);
             AddKeybindOption("foodhotkey", "Food Hotkey", GameInput.Device.Keyboard, Config.FoodHotKey);
 
@@ -107,7 +109,6 @@ namespace WaterFoodHotkey
 
             AddSliderOption("waterpercentage", "Water Percentage", 1, 99, Config.WaterPercentage);
             AddSliderOption("foodpercentage", "Food Percentage", 1, 99, Config.FoodPercentage);
-
         }
     }
 }

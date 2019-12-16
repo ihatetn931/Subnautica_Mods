@@ -5,7 +5,7 @@ using SMLHelper.V2.Handlers;
 using UnityEngine;
 
 
-namespace DockLightsToggle
+namespace DockLightsToggleBZ
 {
     
     public static class MainPatch

@@ -8,6 +8,6 @@
   "Game": "BelowZero",
   "AssemblyName": "DockLightsToggle.dll",
   "Dependencies": [],
-  "EntryMethod": "DockLightsToggle.MainPatch.FirstStart",
+  "EntryMethod": "DockLightsToggleBZ.MainPatch.FirstStart",
   "Config": {}
 }

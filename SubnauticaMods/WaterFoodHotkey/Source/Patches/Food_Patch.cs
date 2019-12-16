@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 using System.Text;
 using UnityEngine;
 
 namespace WaterFoodHotkey.Patches
 {
-    class Food_Patch
+    public static class Food_Patch
     {
         public static void Patch_Player_Food()
         {
@@ -52,6 +53,7 @@ namespace WaterFoodHotkey.Patches
             IList<InventoryItem> snacks1 = pInventory.container.GetItems(TechType.Snack1);
             IList<InventoryItem> snacks2 = pInventory.container.GetItems(TechType.Snack2);
             IList<InventoryItem> snacks3 = pInventory.container.GetItems(TechType.Snack3);
+
             if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == false)
             {
                 if (Config.TextValue == 0)
@@ -65,7 +67,18 @@ namespace WaterFoodHotkey.Patches
             }
             else if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == true && !MainPatch.EditNameCheck)
             {
-                if (Player.main.GetComponent<Survival>().food <= Config.FoodPercentage)
+                if (!GameModeUtils.IsOptionActive(GameModeOption.Survival))
+                {
+                    if (Config.TextValue == 0)
+                    {
+                        ErrorMessage.AddWarning("You're Not In Survival Why Would You Need To Eat");
+                    }
+                    else if (Config.TextValue == 1)
+                    {
+                        Subtitles.main.Add("You're Not In Survival Why Would You Need To Eat");
+                    }
+                }
+                else if (Player.main.GetComponent<Survival>().food <= Config.FoodPercentage)
                 {
                     if (cookedBladderFish != null)
                     {

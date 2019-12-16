@@ -1,12 +1,11 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace WaterFoodHotkey.Patches
 {
-    class Water_Patch
+    public static class Water_Patch
     {
         public static void Patch_Player_Water()
         {
@@ -22,6 +21,7 @@ namespace WaterFoodHotkey.Patches
             IList<InventoryItem> disinfectedWater = pInventory.container.GetItems(TechType.DisinfectedWater);
             IList<InventoryItem> bigfilteredWater = pInventory.container.GetItems(TechType.BigFilteredWater);
             IList<InventoryItem> cOffee = pInventory.container.GetItems(TechType.Coffee);
+
             if (Input.GetKeyDown(Config.WaterHotKey) && Config.ToggleWaterHotKey == false)
             {
                 if (Config.TextValue == 0)
@@ -35,7 +35,18 @@ namespace WaterFoodHotkey.Patches
             }
             else if (Input.GetKeyDown(Config.WaterHotKey) && Config.ToggleWaterHotKey == true && !MainPatch.EditNameCheck)
             {
-                if (Player.main.GetComponent<Survival>().water <= Config.WaterPercentage)
+                if (!GameModeUtils.IsOptionActive(GameModeOption.Survival))
+                {
+                    if (Config.TextValue == 0)
+                    {
+                        ErrorMessage.AddWarning("You're Not In Survival Why Would You Need To Drink");
+                    }
+                    else if (Config.TextValue == 1)
+                    {
+                        Subtitles.main.Add("You're Not In Survival Why Would You Need To Drink");
+                    }
+                }
+                else if (Player.main.GetComponent<Survival>().water <= Config.WaterPercentage)
                 {
                     if (filteredWater != null)
                     {

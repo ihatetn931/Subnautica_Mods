@@ -2,7 +2,7 @@
 using SMLHelper.V2.Utility;
 using UnityEngine;
 
-namespace WaterFoodHotkey
+namespace WaterFoodHotkeyBZ
 {
     public static class Config
     {

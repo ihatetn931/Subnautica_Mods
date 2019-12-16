@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using UnityEngine;
 //public static bool dBug = false;
-namespace DockLightsToggle
+namespace DockLightsToggleBZ
 {
     [Serializable]
     public class LightState

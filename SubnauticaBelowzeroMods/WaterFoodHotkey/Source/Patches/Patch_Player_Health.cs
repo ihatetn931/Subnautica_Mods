@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace WaterFoodHotkey.Patches
+namespace WaterFoodHotkeyBZ.Patches
 {
     public static class PlayerHealth_Patch
     {

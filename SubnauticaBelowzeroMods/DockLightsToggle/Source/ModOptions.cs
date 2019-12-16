@@ -3,7 +3,7 @@ using SMLHelper.V2.Options;
 using SMLHelper.V2.Utility;
 using UnityEngine;
 
-namespace DockLightsToggle
+namespace DockLightsToggleBZ
 {
     public static class Config
     {

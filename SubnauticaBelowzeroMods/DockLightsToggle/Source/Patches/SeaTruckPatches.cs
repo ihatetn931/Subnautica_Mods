@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using SMLHelper.V2.Handlers;
 
-namespace DockLightsToggle.Patches
+namespace DockLightsToggleBZ.Patches
 {
     [Serializable]
     [HarmonyPatch(typeof(SeaTruckLights))]

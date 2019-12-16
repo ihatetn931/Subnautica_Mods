@@ -1,7 +1,7 @@
 using System.Reflection;
 using Harmony;
 using SMLHelper.V2.Handlers;
-using UnityEngine;
+
 
 namespace WaterFoodHotkey
 {
@@ -20,20 +20,18 @@ namespace WaterFoodHotkey
             Debug.Log($"[WaterFoodHotkey] :: TextValue is '{Config.TextValue}'");
             Debug.Log($"[WaterFoodHotkey] :: ToggleWaterHotKey is '{Config.ToggleWaterHotKey}'");
             Debug.Log($"[WaterFoodHotkey] :: ToggleFoodHotKey is '{Config.ToggleFoodHotKey}'");
-#endif
-            SecondStart();
-#if DEBUG
+            Debug.Log($"[WaterFoodHotkey] :: Foodpercentage is '{Config.FoodPercentage}'");
+            Debug.Log($"[WaterFoodHotkey] :: WaterPercentage is '{Config.WaterPercentage}'");
             Debug.Log($"[WaterFoodHotkey] Loaded Successfully");
 #endif
+            SecondStart();
 
         }
 
         public static void SecondStart()
         {
             HarmonyInstance harmony = HarmonyInstance.Create("WaterFoodHotkey.mod");
-           // harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-            //Player Patch for hotkey
             MethodInfo pInfo = AccessTools.Method(typeof(Player), "Update");
             harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.Water_Patch), nameof(Patches.Water_Patch.Patch_Player_Water)), null);
             harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.Food_Patch), nameof(Patches.Food_Patch.Patch_Player_Food)), null);

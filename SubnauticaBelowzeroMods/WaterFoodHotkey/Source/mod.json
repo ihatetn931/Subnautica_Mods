@@ -8,6 +8,6 @@
   "AssemblyName": "WaterFoodHotkeyBZ.dll",
   "Dependencies": ["SMLHelper"],
   "LoadAfter": ["SMLHelper"],
-  "EntryMethod": "WaterFoodHotkey.MainPatch.FirstStart",
+  "EntryMethod": "WaterFoodHotkeyBZ.MainPatch.FirstStart",
   "Config": {}
 }

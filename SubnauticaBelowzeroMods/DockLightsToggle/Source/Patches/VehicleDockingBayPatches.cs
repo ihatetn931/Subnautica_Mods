@@ -1,6 +1,6 @@
 ﻿using Harmony;
 using UnityEngine;
-namespace DockLightsToggle.Patches
+namespace DockLightsToggleBZ.Patches
 {
     [HarmonyPatch(typeof(VehicleDockingBay))]
     [HarmonyPatch("Start")]
