@@ -11,11 +11,10 @@ namespace BetterFlashLightBZ
             Config.Load();
             OptionsPanelHandler.RegisterModOptions(new Options());
             SecondStart();
-
         }
         public static void SecondStart()
         {
-            HarmonyInstance.Create("BetterFlashLight.mod").PatchAll(Assembly.GetExecutingAssembly());
+            HarmonyInstance.Create("BetterFlashLightBZ.mod").PatchAll(Assembly.GetExecutingAssembly());
         }
     }
 }

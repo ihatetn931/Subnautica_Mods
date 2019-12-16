@@ -7,8 +7,8 @@
     <ProjectGuid>{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetterFlashLight</RootNamespace>
-    <AssemblyName>BetterFlashLight</AssemblyName>
+    <RootNamespace>BetterFlashLightBZ</RootNamespace>
+    <AssemblyName>BetterFlashLightBZ</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

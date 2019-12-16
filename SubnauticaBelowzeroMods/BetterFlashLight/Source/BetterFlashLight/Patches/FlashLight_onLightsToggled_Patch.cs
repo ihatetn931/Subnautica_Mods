@@ -1,7 +1,7 @@
 ﻿using Harmony;
 using UnityEngine;
 
-namespace BetterFlashLight.Patches
+namespace BetterFlashLightBZ.Patches
 {
     [HarmonyPatch(typeof(FlashLight))]
     [HarmonyPatch("onLightsToggled")]
@@ -9,7 +9,7 @@ namespace BetterFlashLight.Patches
     {
         public static bool Prefix(FlashLight __instance)
         {
-            if (BetterFlashLightBZ.Config.ToggleColor)
+            if (Config.ToggleColor)
             {
                 if (__instance.toggleLights.lightsParent != null)
                 {
@@ -20,14 +20,17 @@ namespace BetterFlashLight.Patches
                         {
                             if (allLights.gameObject.name.Contains("x_flashlightCone"))
                             {
-                                allLights.color = BetterFlashLightBZ.Config.FlashLightColor.ToColor(true);
-                                allLights.intensity = BetterFlashLightBZ.Config.Range;
+                                allLights.color = Config.FlashLightColor.ToColor(true);
+                                allLights.intensity = Config.Intensity;
+                                allLights.range = Config.Range;
                             }
                             else
                             {
-                                allLights.color = BetterFlashLightBZ.Config.FlashLightColor.ToColor(true);
-                                allLights.intensity = BetterFlashLightBZ.Config.Range;
+                                allLights.color = Config.FlashLightColor.ToColor(true);
+                                allLights.intensity = Config.Intensity;
+                                allLights.range = Config.Range;
                             }
+                            break;
                         }
                     }
                 }
@@ -41,16 +44,17 @@ namespace BetterFlashLight.Patches
                     {
                         if (allLights.gameObject.name.Contains("x_flashlightCone"))
                         {
-                            allLights.color = BetterFlashLightBZ.Config.FlashLightColor.ToColor(false);
-                            allLights.range = 50.000f;
+                            allLights.color = Config.FlashLightColor.ToColor(false);
                             allLights.intensity = 1.000f;
+                            allLights.range = 50.000f;
                         }
                         else
                         {
-                            allLights.color = BetterFlashLightBZ.Config.FlashLightColor.ToColor(false);
-                            allLights.range = 50.000f;
+                            allLights.color = Config.FlashLightColor.ToColor(false);
                             allLights.intensity = 1.000f;
+                            allLights.range = 50.000f;
                         }
+                        break;
                     }
                 }
             }

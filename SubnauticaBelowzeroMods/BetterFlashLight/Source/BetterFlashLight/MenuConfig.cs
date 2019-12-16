@@ -12,6 +12,7 @@ namespace BetterFlashLightBZ
         public static float rValue;
         public static float gValue;
         public static float bValue;
+        public static float Intensity;
         public static float Range;
         public static bool ToggleColor;
 
@@ -20,7 +21,8 @@ namespace BetterFlashLightBZ
             rValue = PlayerPrefs.GetFloat("R", 0.996f);
             gValue = PlayerPrefs.GetFloat("G", 0.942f);
             bValue = PlayerPrefs.GetFloat("B", 0.819f);
-            Range = PlayerPrefs.GetFloat("Range", 1.000f);
+            Intensity = PlayerPrefs.GetFloat("Intensity", 1.000f);
+            Range = PlayerPrefs.GetFloat("Range", 50.000f);
             ToggleColor = PlayerPrefsExtra.GetBool("ToggleColor", false);
         }
     }
@@ -58,6 +60,11 @@ namespace BetterFlashLightBZ
                 Config.bValue = e.Value;
                 PlayerPrefs.SetFloat("B", e.Value);
             }
+            else if (e.Id == "intensity")
+            {
+                Config.Intensity = e.Value;
+                PlayerPrefs.SetFloat("Intensity", e.Value);
+            }
             else if (e.Id == "range")
             {
                 Config.Range = e.Value;
@@ -73,7 +80,8 @@ namespace BetterFlashLightBZ
                 AddSliderOption("r", "Red", 0.0f, 1.000f, Config.rValue);
                 AddSliderOption("g", "Green", 0.0f, 1.000f, Config.gValue);
                 AddSliderOption("b", "Blue", 0.0f, 1.000f, Config.bValue);
-                AddSliderOption("range", "Light Brightness", 0.000f, 1.999f, Config.Range);
+                AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+                AddSliderOption("range", "Light Range", 50.000f, 100.000f, Config.Range);
             }
             else
             {

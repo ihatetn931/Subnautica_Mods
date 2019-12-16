@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterFoodHotkeyBZ", "Subnau
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockLightsToggleBZ", "SubnauticaBelowzeroMods\DockLightsToggle\Source\DockLightsToggleBZ.csproj", "{3ECA0C8E-1823-489E-A235-73922AA03ED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterFlashLight", "SubnauticaBelowzeroMods\BetterFlashLight\Source\BetterFlashLight\BetterFlashLight.csproj", "{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterFlashLightBZ", "SubnauticaBelowzeroMods\BetterFlashLight\Source\BetterFlashLight\BetterFlashLightBZ.csproj", "{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
