@@ -20,13 +20,11 @@ namespace BetterFlashLight.Patches
                         {
                             if (allLights.gameObject.name.Contains("x_flashlightCone"))
                             {
-                                //allLights.range = Config.Range;
                                 allLights.color = BetterFlashLightBZ.Config.FlashLightColor.ToColor(true);
                                 allLights.intensity = BetterFlashLightBZ.Config.Range;
                             }
                             else
                             {
-                                // allLights.range = Config.Range;
                                 allLights.color = BetterFlashLightBZ.Config.FlashLightColor.ToColor(true);
                                 allLights.intensity = BetterFlashLightBZ.Config.Range;
                             }
