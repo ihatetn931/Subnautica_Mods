@@ -37,8 +37,6 @@ namespace DockLightsToggleBZ
             else
             {
                 AttemptToCreate();
-                //Debug.Log("[DockingLightsToggle] Mod was not loaded missing settings.json");
-                //return false;
             }
             return true;
         }

@@ -37,20 +37,6 @@ namespace DockLightsToggleBZ.Patches
                         light.enabled = true;
                     }
                 }
-                /*if(MainPatch.exuSuitIsDockOnSeaTruck == true)
-                {
-                    if (MainPatch.seaTruckDock.PrawnSuitSeaTruckDockToggle == true)
-                    {
-                        if (light.gameObject.name.Contains("left"))
-                        {
-                            light.enabled = false;
-                        }
-                        else
-                        {
-                            light.enabled = false;
-                        }
-                    }
-                }*/
             }
             return true;
         }
