@@ -64,7 +64,9 @@
     <Compile Include="Main.cs" />
     <Compile Include="ModOptions.cs" />
     <Compile Include="Patches\ExoSuitPatch.cs" />
+    <Compile Include="Patches\HovebikePatches.cs" />
     <Compile Include="Patches\SeaTruckPatches.cs" />
+    <Compile Include="Patches\HovePadPatches.cs" />
     <Compile Include="Patches\VehicleDockingBayPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

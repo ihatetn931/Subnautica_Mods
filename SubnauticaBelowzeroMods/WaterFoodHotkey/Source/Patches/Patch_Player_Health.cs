@@ -18,7 +18,7 @@ namespace WaterFoodHotkeyBZ.Patches
             Inventory pInventory = Inventory.main;
 
             IList<InventoryItem> medKit = pInventory.container.GetItems(TechType.FirstAidKit);
-            if (Input.GetKeyDown(Config.MedHotKey) && Config.ToggleMedHotKey == false)
+            if (Input.GetKeyDown(Config.MedHotKey) && Config.ToggleMedHotKey == false && !MainPatch.EditNameCheck)
             {
                 if (Config.TextValue == 0)
                 {
@@ -38,17 +38,6 @@ namespace WaterFoodHotkeyBZ.Patches
                 Debug.Log($"[WaterDrinkHotkey] :: Player Freedom Gamemode is {GameModeUtils.IsOptionActive(GameModeOption.Freedom)}");
                 Debug.Log($"[WaterDrinkHotkey] :: Player Survival Gamemode is {GameModeUtils.IsOptionActive(GameModeOption.Survival)}");
 #endif
-                /*if (GameModeUtils.IsOptionActive(GameModeOption.Creative))
-                {
-                    if (textConfig.TextValue == 0)
-                    {
-                        ErrorMessage.AddWarning("You're in Creative why do you need a heal");
-                    }
-                    else if (textConfig.TextValue == 1)
-                    {
-                        Subtitles.Add("You're in Creative why do you need a heal");
-                    }
-                }*/
                 if (Player.main.GetComponent<LiveMixin>().health <= Config.HealthPercentage)
                 {
                     if (medKit != null)

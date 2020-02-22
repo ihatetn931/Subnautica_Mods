@@ -12,6 +12,7 @@ namespace DockLightsToggleBZ
     {
         public static bool seaTruckIsDocked = false;
         public static bool exoSuitIsDocked = false;
+        public static bool snowfoxIsDocked = false;
         public static LightState state;
         public static void FirstStart()
         {

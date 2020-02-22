@@ -8,6 +8,7 @@ namespace WaterFoodHotkey
     public static class MainPatch
     {
         public static bool EditNameCheck = false;
+        public static bool SurvivalCheck = false;
 
         public static void FirstStart()
         {

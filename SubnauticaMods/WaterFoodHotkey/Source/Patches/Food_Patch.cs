@@ -54,7 +54,7 @@ namespace WaterFoodHotkey.Patches
             IList<InventoryItem> snacks2 = pInventory.container.GetItems(TechType.Snack2);
             IList<InventoryItem> snacks3 = pInventory.container.GetItems(TechType.Snack3);
 
-            if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == false)
+            if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == false && !MainPatch.EditNameCheck)
             {
                 if (Config.TextValue == 0)
                 {
@@ -65,20 +65,9 @@ namespace WaterFoodHotkey.Patches
                     Subtitles.main.Add("You Have Disabled The Food Hotkey");
                 }
             }
-            else if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == true && !MainPatch.EditNameCheck)
+            else if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey)
             {
-                if (!GameModeUtils.IsOptionActive(GameModeOption.Survival))
-                {
-                    if (Config.TextValue == 0)
-                    {
-                        ErrorMessage.AddWarning("You're Not In Survival Why Would You Need To Eat");
-                    }
-                    else if (Config.TextValue == 1)
-                    {
-                        Subtitles.main.Add("You're Not In Survival Why Would You Need To Eat");
-                    }
-                }
-                else if (Player.main.GetComponent<Survival>().food <= Config.FoodPercentage)
+                if (Player.main.GetComponent<Survival>().food <= Config.FoodPercentage)
                 {
                     if (cookedBladderFish != null)
                     {
@@ -251,3 +240,4 @@ namespace WaterFoodHotkey.Patches
         }
     }
 }
+

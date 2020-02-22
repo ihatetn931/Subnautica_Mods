@@ -22,7 +22,7 @@ namespace WaterFoodHotkey.Patches
             IList<InventoryItem> bigfilteredWater = pInventory.container.GetItems(TechType.BigFilteredWater);
             IList<InventoryItem> cOffee = pInventory.container.GetItems(TechType.Coffee);
 
-            if (Input.GetKeyDown(Config.WaterHotKey) && Config.ToggleWaterHotKey == false)
+            if (Input.GetKeyDown(Config.WaterHotKey) && Config.ToggleWaterHotKey == false && !MainPatch.EditNameCheck)
             {
                 if (Config.TextValue == 0)
                 {
@@ -33,20 +33,9 @@ namespace WaterFoodHotkey.Patches
                     Subtitles.main.Add("You Have Disabled The Water Hotkey");
                 }
             }
-            else if (Input.GetKeyDown(Config.WaterHotKey) && Config.ToggleWaterHotKey == true && !MainPatch.EditNameCheck)
+            else if (Input.GetKeyDown(Config.WaterHotKey) && Config.ToggleWaterHotKey && !MainPatch.EditNameCheck)
             {
-                if (!GameModeUtils.IsOptionActive(GameModeOption.Survival))
-                {
-                    if (Config.TextValue == 0)
-                    {
-                        ErrorMessage.AddWarning("You're Not In Survival Why Would You Need To Drink");
-                    }
-                    else if (Config.TextValue == 1)
-                    {
-                        Subtitles.main.Add("You're Not In Survival Why Would You Need To Drink");
-                    }
-                }
-                else if (Player.main.GetComponent<Survival>().water <= Config.WaterPercentage)
+                if (Player.main.GetComponent<Survival>().water <= Config.WaterPercentage)
                 {
                     if (filteredWater != null)
                     {
@@ -80,6 +69,7 @@ namespace WaterFoodHotkey.Patches
                         }
                     }
                 }
+
                 else
                 {
                     if (Config.TextValue == 0)

@@ -49,6 +49,7 @@ namespace WaterFoodHotkeyBZ.Patches
             IList<InventoryItem> curedLavaEyeeye = pInventory.container.GetItems(TechType.CuredLavaEyeye);
             IList<InventoryItem> curedOculus = pInventory.container.GetItems(TechType.CuredOculus);
             IList<InventoryItem> curedPeeper = pInventory.container.GetItems(TechType.CuredPeeper);
+            IList<InventoryItem> curedarcticPeeper = pInventory.container.GetItems(TechType.CuredArcticPeeper);
             IList<InventoryItem> curedReginald = pInventory.container.GetItems(TechType.CuredReginald);
             IList<InventoryItem> curedSpadeFish = pInventory.container.GetItems(TechType.CuredSpadefish);
             IList<InventoryItem> curedSpineFish = pInventory.container.GetItems(TechType.CuredSpinefish);
@@ -70,7 +71,7 @@ namespace WaterFoodHotkeyBZ.Patches
             IList<InventoryItem> snacks1 = pInventory.container.GetItems(TechType.Snack1);
             IList<InventoryItem> snacks2 = pInventory.container.GetItems(TechType.Snack2);
             IList<InventoryItem> snacks3 = pInventory.container.GetItems(TechType.Snack3);
-            if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == false)
+            if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == false && !MainPatch.EditNameCheck)
             {
                 if (Config.TextValue == 0)
                 {
@@ -83,18 +84,7 @@ namespace WaterFoodHotkeyBZ.Patches
             }
             else if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == true && !MainPatch.EditNameCheck)
             {
-                if (!GameModeUtils.IsOptionActive(GameModeOption.Survival))
-                {
-                    if (Config.TextValue == 0)
-                    {
-                        ErrorMessage.AddWarning("You're Not In Survival Why Would You Need To Eat");
-                    }
-                    else if (Config.TextValue == 1)
-                    {
-                        Subtitles.Add("You're Not In Survival Why Would You Need To Eat");
-                    }
-                }
-                else if (Player.main.GetComponent<Survival>().food <= Config.FoodPercentage)
+                if (Player.main.GetComponent<Survival>().food <= Config.FoodPercentage)
                 {
                     //Cooked
                     if (cookedBladderFish != null)
@@ -273,6 +263,10 @@ namespace WaterFoodHotkeyBZ.Patches
                     else if (curedTriops != null)
                     {
                         pInventory.ExecuteItemAction(ItemAction.Eat, curedTriops.First());
+                    }
+                    else if (curedarcticPeeper != null)
+                    {
+                        pInventory.ExecuteItemAction(ItemAction.Eat, curedarcticPeeper.First());
                     }
                     //Vegies and Fruit
                     else if (bulboTreeFruit != null)

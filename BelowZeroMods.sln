@@ -9,6 +9,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockLightsToggleBZ", "Subna
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterFlashLightBZ", "SubnauticaBelowzeroMods\BetterFlashLight\Source\BetterFlashLight\BetterFlashLightBZ.csproj", "{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaTruckSpeedoBZ", "SubnauticaBelowzeroMods\SeatruckSpeedo\Source\SeaTruckSpeedo\SeaTruckSpeedoBZ.csproj", "{DB86E420-8F4D-47C9-9DCA-BB93AC343F3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraFov", "SubnauticaBelowzeroMods\ExtraFov\Source\ExtraFov\ExtraFov.csproj", "{0FA4597F-5083-485B-9867-97BAE899EEFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubnauticaBZRP", "SubnauticaBelowzeroMods\SubnauticaBZRP\SubnauticaBZRP.csproj", "{EB147EB9-CC24-4E0A-B057-356237B9CF60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordsdkTest", "SubnauticaBelowzeroMods\DiscordSdkTest\Source\DiscordsdkTest\DiscordsdkTest.csproj", "{B6A94134-B17E-42AD-A911-97148B752FF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FasterSeaglideBZ", "SubnauticaBelowzeroMods\FasterVehiclesBZ\Source\FasterVehicles\FasterSeaglideBZ.csproj", "{69570A2A-D006-42C7-A94E-87B94BE3F1AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterSeaglide", "SubnauticaBelowzeroMods\BetterSeaglide\BetterSeaglide\BetterSeaglide.csproj", "{7CECECFF-C25A-4684-B727-ACD10E0F94F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelowZeroAltMeter", "SubnauticaBelowzeroMods\BelowZeroAltMeter\BelowZeroAltMeter\BelowZeroAltMeter.csproj", "{AF698137-87A3-43E4-923C-E1A7A4553730}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +41,34 @@ Global
 		{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AB3C1D8-4385-4BBB-9953-6EAE299BEC20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB86E420-8F4D-47C9-9DCA-BB93AC343F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB86E420-8F4D-47C9-9DCA-BB93AC343F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB86E420-8F4D-47C9-9DCA-BB93AC343F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB86E420-8F4D-47C9-9DCA-BB93AC343F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA4597F-5083-485B-9867-97BAE899EEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA4597F-5083-485B-9867-97BAE899EEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA4597F-5083-485B-9867-97BAE899EEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA4597F-5083-485B-9867-97BAE899EEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB147EB9-CC24-4E0A-B057-356237B9CF60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB147EB9-CC24-4E0A-B057-356237B9CF60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB147EB9-CC24-4E0A-B057-356237B9CF60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB147EB9-CC24-4E0A-B057-356237B9CF60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6A94134-B17E-42AD-A911-97148B752FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A94134-B17E-42AD-A911-97148B752FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A94134-B17E-42AD-A911-97148B752FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A94134-B17E-42AD-A911-97148B752FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69570A2A-D006-42C7-A94E-87B94BE3F1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69570A2A-D006-42C7-A94E-87B94BE3F1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69570A2A-D006-42C7-A94E-87B94BE3F1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69570A2A-D006-42C7-A94E-87B94BE3F1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CECECFF-C25A-4684-B727-ACD10E0F94F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CECECFF-C25A-4684-B727-ACD10E0F94F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CECECFF-C25A-4684-B727-ACD10E0F94F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CECECFF-C25A-4684-B727-ACD10E0F94F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF698137-87A3-43E4-923C-E1A7A4553730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF698137-87A3-43E4-923C-E1A7A4553730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF698137-87A3-43E4-923C-E1A7A4553730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF698137-87A3-43E4-923C-E1A7A4553730}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
