@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterFoodHotkey",".\SubnauticaMods\WaterFoodHotkey\Source\WaterFoodHotkey.csproj", "{610DD461-6353-4909-ADA4-BCBC9B3A6C37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterFoodHotkey", "SubnauticaMods\WaterFoodHotkey\Source\WaterFoodHotkey.csproj", "{610DD461-6353-4909-ADA4-BCBC9B3A6C37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubnauticaAltMeter", "SubnauticaMods\SubnauticaAltMeter\SubnauticaAltMeter.csproj", "{AF698137-87A3-43E4-923C-E1A7A4553730}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{610DD461-6353-4909-ADA4-BCBC9B3A6C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{610DD461-6353-4909-ADA4-BCBC9B3A6C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{610DD461-6353-4909-ADA4-BCBC9B3A6C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF698137-87A3-43E4-923C-E1A7A4553730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF698137-87A3-43E4-923C-E1A7A4553730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF698137-87A3-43E4-923C-E1A7A4553730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF698137-87A3-43E4-923C-E1A7A4553730}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

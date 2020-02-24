@@ -1,7 +1,7 @@
 ﻿using Harmony;
 using UnityEngine;
 
-namespace BelowZeroAltMeter
+namespace SubnauticaAltMeter
 {
     class AltMeter
     {
@@ -20,8 +20,8 @@ namespace BelowZeroAltMeter
                     var depth = Mathf.FloorToInt(Player.main.GetDepth());
                     if (altitude != 0 && depth == 0)
                     {
-                        __instance.suffixText.text = "m↑";
                         __instance.depthText.text = altitude.ToString();
+                        __instance.suffixText.text = "m↑";
                     }
                 }
                 return true;
