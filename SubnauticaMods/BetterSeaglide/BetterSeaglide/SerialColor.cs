@@ -28,11 +28,11 @@ namespace BetterSeaglide
         {
             if(value)
             {
-                return new Color(Config.rValue, Config.gValue, Config.bValue, a);
+                return new Color32(Convert.ToByte(Config.rValue), Convert.ToByte(Config.gValue), Convert.ToByte(Config.bValue), 1);
             }
             else
             {
-                return new Color(r, g, b, a);
+                return new Color(r, g, b, 1.000f);
             }
         }
     }

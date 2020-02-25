@@ -22,8 +22,8 @@ namespace BetterSeaglide
             gValue = PlayerPrefs.GetFloat("G", 1.000f);
             bValue = PlayerPrefs.GetFloat("B", 1.000f);
             Intensity = PlayerPrefs.GetFloat("Intensity", 0.9f);
-            Range = PlayerPrefs.GetFloat("Range", 40);
-            spotAngle = PlayerPrefs.GetFloat("Size", 70);
+            Range = PlayerPrefs.GetFloat("Range", 40f);
+            spotAngle = PlayerPrefs.GetFloat("Size", 70f);
             ToggleColor = PlayerPrefsExtra.GetBool("ToggleColor", false);
         }
     }
@@ -83,9 +83,9 @@ namespace BetterSeaglide
             if (Config.ToggleColor)
             {
                 AddToggleOption("toggleColor", "Better Seaglide Color Enabled", Config.ToggleColor);
-                AddSliderOption("r", "Red", 0.0f, 1.000f, Config.rValue);
-                AddSliderOption("g", "Green", 0.0f, 1.000f, Config.gValue);
-                AddSliderOption("b", "Blue", 0.0f, 1.000f, Config.bValue);
+                AddSliderOption("r", "Red", 0, 255, Config.rValue);
+                AddSliderOption("g", "Green", 0, 255, Config.gValue);
+                AddSliderOption("b", "Blue", 0, 255, Config.bValue);
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
