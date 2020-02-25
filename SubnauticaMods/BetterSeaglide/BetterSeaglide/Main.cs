@@ -2,7 +2,7 @@
 using Harmony;
 using SMLHelper.V2.Handlers;
 
-namespace BetterSeaglideBZ
+namespace BetterSeaglide
 {
     public class MainPatch
     {
@@ -14,7 +14,7 @@ namespace BetterSeaglideBZ
         }
         public static void SecondStart()
         {
-            HarmonyInstance.Create("BetterSeaglideBZ.mod").PatchAll(Assembly.GetExecutingAssembly());
+            HarmonyInstance.Create("BetterSeaglide.mod").PatchAll(Assembly.GetExecutingAssembly());
         }
     }
 }

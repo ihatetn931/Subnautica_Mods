@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿/*using Harmony;
 using UnityEngine;
 
 namespace BetterSeaglideBZ.Patches
@@ -19,9 +19,9 @@ namespace BetterSeaglideBZ.Patches
                     $"instance strafemaxspeed is {__instance.seaglideStrafeMaxSpeed}\n" +
                     $"instance swimdrag is  {__instance.seaglideSwimDrag}\n" +
                     $"instance z is  {__instance}\n"
-                    /*$"{__instance.gameObject.transform.forward.}"*/);
+                    /*$"{__instance.gameObject.transform.forward.}");
                 return true;
             }
         }
     }
-}
+}*/

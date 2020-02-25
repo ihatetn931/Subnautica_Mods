@@ -1,12 +1,12 @@
 ﻿using Harmony;
 using UnityEngine;
 
-namespace BetterSeaglideBZ.Patches
+namespace BetterSeaglide.Patches
 {
     [HarmonyPatch(typeof(Seaglide))]
-    [HarmonyPatch("onLightsToggled")]
+    [HarmonyPatch("Update")]
 
-    internal class Seaglide_onLightsToggled_Patch
+    internal class Seaglide_Update_Patch
     {
         public static bool Prefix(Seaglide __instance)
         {

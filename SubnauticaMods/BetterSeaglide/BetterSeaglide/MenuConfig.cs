@@ -3,11 +3,11 @@ using SMLHelper.V2.Options;
 using SMLHelper.V2.Utility;
 using UnityEngine;
 
-namespace BetterSeaglideBZ
+namespace BetterSeaglide
 {
     public static class Config
     {
-        public static SerializableColor FlashLightColor = Color.white;
+        public static SerializableColor FlashLightColor = new Color(0.016f, 1.0f, 1.0f);
         public static float rValue;
         public static float gValue;
         public static float bValue;
@@ -24,7 +24,6 @@ namespace BetterSeaglideBZ
             Intensity = PlayerPrefs.GetFloat("Intensity", 0.9f);
             Range = PlayerPrefs.GetFloat("Range", 40);
             spotAngle = PlayerPrefs.GetFloat("Size", 70);
-            spotAngle = PlayerPrefs.GetFloat("Speed", 7.5f);
             ToggleColor = PlayerPrefsExtra.GetBool("ToggleColor", false);
         }
     }
@@ -77,11 +76,6 @@ namespace BetterSeaglideBZ
                 Config.spotAngle = e.Value;
                 PlayerPrefs.SetFloat("Size", e.Value);
             }
-            else if (e.Id == "speed")
-            {
-                Config.seaglideSpeed = e.Value;
-                PlayerPrefs.SetFloat("Speed", e.Value);
-            }
         }
 
         public override void BuildModOptions()
@@ -95,7 +89,6 @@ namespace BetterSeaglideBZ
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
-                AddSliderOption("speed", "Seaglide Speed", 7.5f, 9999.5f, Config.seaglideSpeed);
                 Config.Load();
             }
             else
@@ -104,7 +97,6 @@ namespace BetterSeaglideBZ
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
-                AddSliderOption("speed", "Seaglide Speed", 7.5f, 9999.5f, Config.seaglideSpeed);
                 Config.Load();
             }
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 //Thanks to randyKnapp
-namespace BetterSeaglideBZ
+namespace BetterSeaglide
 {
     [Serializable]
     public class SerializableColor
