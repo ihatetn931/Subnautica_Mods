@@ -1,7 +1,7 @@
 ﻿/*using Harmony;
 using UnityEngine;
 
-namespace BetterSeaglideBZ.Patches
+namespace BetterSeaglide.Patches
 {
     class SeaglideSpeedPatch
     {

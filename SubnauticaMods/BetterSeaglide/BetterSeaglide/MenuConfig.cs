@@ -15,7 +15,7 @@ namespace BetterSeaglide
         public static float Range;
         public static bool ToggleColor;
         public static float spotAngle;
-        public static float seaglideSpeed;
+
         public static void Load()
         {
             rValue = PlayerPrefs.GetFloat("R", 0.016f);
