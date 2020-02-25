@@ -1,5 +1,4 @@
-﻿using SMLHelper.V2.Handlers;
-using SMLHelper.V2.Options;
+﻿using SMLHelper.V2.Options;
 using SMLHelper.V2.Utility;
 using UnityEngine;
 
@@ -18,6 +17,7 @@ namespace BetterSeaglide
 
         public static void Load()
         {
+
             rValue = PlayerPrefs.GetFloat("R", 0.016f);
             gValue = PlayerPrefs.GetFloat("G", 1.000f);
             bValue = PlayerPrefs.GetFloat("B", 1.000f);
