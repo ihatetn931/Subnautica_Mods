@@ -10,10 +10,14 @@ namespace BetterSeaglide
         public static float rValue;
         public static float gValue;
         public static float bValue;
+        public static float seagliderValue;
+        public static float seaglidegValue;
+        public static float seaglidebValue;
         public static float Intensity;
         public static float Range;
         public static bool ToggleColor;
         public static float spotAngle;
+        public static bool SeaGlideColor;
 
         public static void Load()
         {
@@ -21,10 +25,14 @@ namespace BetterSeaglide
             rValue = PlayerPrefs.GetFloat("R", 0.016f);
             gValue = PlayerPrefs.GetFloat("G", 1.000f);
             bValue = PlayerPrefs.GetFloat("B", 1.000f);
+            seagliderValue = PlayerPrefs.GetFloat("SeaglideR", 0.016f);
+            seaglidegValue = PlayerPrefs.GetFloat("SeaglideG", 1.000f);
+            seaglidebValue = PlayerPrefs.GetFloat("SeaglideB", 1.000f);
             Intensity = PlayerPrefs.GetFloat("Intensity", 0.9f);
             Range = PlayerPrefs.GetFloat("Range", 40f);
             spotAngle = PlayerPrefs.GetFloat("Size", 70f);
             ToggleColor = PlayerPrefsExtra.GetBool("ToggleColor", false);
+            SeaGlideColor = PlayerPrefsExtra.GetBool("SeaGlideColor", false);
         }
     }
 
@@ -41,6 +49,11 @@ namespace BetterSeaglide
             {
                 Config.ToggleColor = e.Value;
                 PlayerPrefsExtra.SetBool("ToggleColor", e.Value);
+            }
+            else if (e.Id == "seaglidecolor")
+            {
+                Config.SeaGlideColor = e.Value;
+                PlayerPrefsExtra.SetBool("SeaGlideColor", e.Value);
             }
         }
 
@@ -76,13 +89,29 @@ namespace BetterSeaglide
                 Config.spotAngle = e.Value;
                 PlayerPrefs.SetFloat("Size", e.Value);
             }
+            if (e.Id == "seaglider")
+            {
+                Config.seagliderValue = e.Value;
+                PlayerPrefs.SetFloat("SeaglideR", e.Value);
+            }
+            else if (e.Id == "seaglideg")
+            {
+                Config.seaglidegValue = e.Value;
+                PlayerPrefs.SetFloat("SeaglideG", e.Value);
+            }
+            else if (e.Id == "seaglideb")
+            {
+                Config.seaglidebValue = e.Value;
+                PlayerPrefs.SetFloat("SeaglideB", e.Value);
+            }
         }
 
         public override void BuildModOptions()
         {
-            if (Config.ToggleColor)
+            if (Config.ToggleColor && Config.SeaGlideColor == false)
             {
-                AddToggleOption("toggleColor", "Better Seaglide Color Enabled", Config.ToggleColor);
+                AddToggleOption("toggleColor", "BetterSeaglide Light Color Enabled", Config.ToggleColor);
+                AddToggleOption("seaglidecolor", "BetterSeaglide Color Enabled", Config.SeaGlideColor);
                 AddSliderOption("r", "Red", 0, 255, Config.rValue);
                 AddSliderOption("g", "Green", 0, 255, Config.gValue);
                 AddSliderOption("b", "Blue", 0, 255, Config.bValue);
@@ -91,9 +120,36 @@ namespace BetterSeaglide
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
                 Config.Load();
             }
+            else if(Config.SeaGlideColor && Config.ToggleColor == false)
+            {
+                AddToggleOption("toggleColor", "BetterSeaglide Light Color Enabled", Config.ToggleColor);
+                AddToggleOption("seaglidecolor", "BetterSeaglide Color Enabled", Config.SeaGlideColor);
+                AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+                AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
+                AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
+                AddSliderOption("seaglider", "Seaglide Red", 0, 255, Config.seagliderValue);
+                AddSliderOption("seaglideg", "Seaglide Green", 0, 255, Config.seaglidegValue);
+                AddSliderOption("seaglideb", "Seaglide Blue", 0, 255, Config.seaglidebValue);
+                Config.Load();
+            }
+            else if(Config.ToggleColor && Config.SeaGlideColor)
+            {
+                AddToggleOption("toggleColor", "BetterSeaglide Light Color Enabled", Config.ToggleColor);
+                AddToggleOption("seaglidecolor", "BetterSeaglide Color Enabled", Config.SeaGlideColor);
+                AddSliderOption("r", "Red", 0, 255, Config.rValue);
+                AddSliderOption("g", "Green", 0, 255, Config.gValue);
+                AddSliderOption("b", "Blue", 0, 255, Config.bValue);
+                AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+                AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
+                AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
+                AddSliderOption("seaglider", "Seaglide Red", 0, 255, Config.seagliderValue);
+                AddSliderOption("seaglideg", "Seaglide Green", 0, 255, Config.seaglidegValue);
+                AddSliderOption("seaglideb", "Seaglide Blue", 0, 255, Config.seaglidebValue);
+            }
             else
             {
                 AddToggleOption("toggleColor", "Better Seaglide Color Enabled", Config.ToggleColor);
+                AddToggleOption("seaglidecolor", "BetterSeaglide Color Enabled", Config.SeaGlideColor);
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);

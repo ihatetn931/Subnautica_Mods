@@ -1,4 +1,5 @@
 ﻿using Harmony;
+using System;
 using UnityEngine;
 
 namespace BetterSeaglide.Patches
