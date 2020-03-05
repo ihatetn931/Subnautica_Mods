@@ -28,7 +28,7 @@ namespace BetterSeaglide
         {
             if(value)
             {
-                return new Color32(Convert.ToByte(Config.rValue), Convert.ToByte(Config.gValue), Convert.ToByte(Config.bValue), 1);
+                return new Color32(Convert.ToByte(Menus.Config.rValue), Convert.ToByte(Menus.Config.gValue), Convert.ToByte(Menus.Config.bValue), 1);
             }
             else
             {

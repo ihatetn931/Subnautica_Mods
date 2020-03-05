@@ -1,8 +1,9 @@
-﻿using SMLHelper.V2.Options;
+﻿using SMLHelper.V2.Handlers;
+using SMLHelper.V2.Options;
 using SMLHelper.V2.Utility;
 using UnityEngine;
 
-namespace BetterSeaglide
+namespace BetterSeaglide.Menus
 {
     public static class Config
     {
@@ -21,7 +22,6 @@ namespace BetterSeaglide
 
         public static void Load()
         {
-
             rValue = PlayerPrefs.GetFloat("R", 0.016f);
             gValue = PlayerPrefs.GetFloat("G", 1.000f);
             bValue = PlayerPrefs.GetFloat("B", 1.000f);
@@ -38,7 +38,7 @@ namespace BetterSeaglide
 
     public class Options : ModOptions
     {
-        public Options() : base("Seaglide Light Settings")
+        public Options() : base("BetterSeaglide Settings and Lights")
         {
             SliderChanged += Options_SliderChanged;
             ToggleChanged += Options_ToggleChanged;
@@ -89,7 +89,7 @@ namespace BetterSeaglide
                 Config.spotAngle = e.Value;
                 PlayerPrefs.SetFloat("Size", e.Value);
             }
-            if (e.Id == "seaglider")
+            else if (e.Id == "seaglider")
             {
                 Config.seagliderValue = e.Value;
                 PlayerPrefs.SetFloat("SeaglideR", e.Value);
@@ -110,8 +110,8 @@ namespace BetterSeaglide
         {
             if (Config.ToggleColor && Config.SeaGlideColor == false)
             {
-                AddToggleOption("toggleColor", "BetterSeaglide Light Color Enabled", Config.ToggleColor);
-                AddToggleOption("seaglidecolor", "BetterSeaglide Color Enabled", Config.SeaGlideColor);
+                AddToggleOption("toggleColor", "Show BetterSeaglide Light RGB Sliders", Config.ToggleColor);
+                AddToggleOption("seaglidecolor", "Show BetterSeaglide Color RGB Sliders", Config.SeaGlideColor);
                 AddSliderOption("r", "Red", 0, 255, Config.rValue);
                 AddSliderOption("g", "Green", 0, 255, Config.gValue);
                 AddSliderOption("b", "Blue", 0, 255, Config.bValue);
@@ -122,8 +122,8 @@ namespace BetterSeaglide
             }
             else if(Config.SeaGlideColor && Config.ToggleColor == false)
             {
-                AddToggleOption("toggleColor", "BetterSeaglide Light Color Enabled", Config.ToggleColor);
-                AddToggleOption("seaglidecolor", "BetterSeaglide Color Enabled", Config.SeaGlideColor);
+                AddToggleOption("toggleColor", "Show BetterSeaglide Light RGB Sliders", Config.ToggleColor);
+                AddToggleOption("seaglidecolor", "Show BetterSeaglide Color RGB Sliders", Config.SeaGlideColor);
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
@@ -134,8 +134,8 @@ namespace BetterSeaglide
             }
             else if(Config.ToggleColor && Config.SeaGlideColor)
             {
-                AddToggleOption("toggleColor", "BetterSeaglide Light Color Enabled", Config.ToggleColor);
-                AddToggleOption("seaglidecolor", "BetterSeaglide Color Enabled", Config.SeaGlideColor);
+                AddToggleOption("toggleColor", "Show BetterSeaglide Light RGB Sliders", Config.ToggleColor);
+                AddToggleOption("seaglidecolor", "Show BetterSeaglide Color RGB Sliders", Config.SeaGlideColor);
                 AddSliderOption("r", "Red", 0, 255, Config.rValue);
                 AddSliderOption("g", "Green", 0, 255, Config.gValue);
                 AddSliderOption("b", "Blue", 0, 255, Config.bValue);
@@ -145,11 +145,12 @@ namespace BetterSeaglide
                 AddSliderOption("seaglider", "Seaglide Red", 0, 255, Config.seagliderValue);
                 AddSliderOption("seaglideg", "Seaglide Green", 0, 255, Config.seaglidegValue);
                 AddSliderOption("seaglideb", "Seaglide Blue", 0, 255, Config.seaglidebValue);
+                Config.Load();
             }
             else
             {
-                AddToggleOption("toggleColor", "Better Seaglide Color Enabled", Config.ToggleColor);
-                AddToggleOption("seaglidecolor", "BetterSeaglide Color Enabled", Config.SeaGlideColor);
+                AddToggleOption("toggleColor", "Show BetterSeaglide Light RGB Sliders", Config.ToggleColor);
+                AddToggleOption("seaglidecolor", "Show BetterSeaglide Color RGB Sliders", Config.SeaGlideColor);
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);

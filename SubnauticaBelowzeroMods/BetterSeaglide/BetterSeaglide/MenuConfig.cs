@@ -13,16 +13,14 @@ namespace BetterSeaglideBZ
         public static float rValue;
         public static float gValue;
         public static float bValue;
-        public static float maprValue;
-        public static float mapgValue;
-        public static float mapbValue;
+        public static float seagliderValue;
+        public static float seaglidegValue;
+        public static float seaglidebValue;
         public static float Intensity;
         public static float Range;
         public static bool ToggleColor;
         public static float spotAngle;
-        public static float seaglideSpeed;
-        public static float mapAlpha;
-        public static bool ToggleMapColor;
+        public static bool SeaGlideColor;
         public static void Load()
         {
             rValue = PlayerPrefs.GetFloat("R", 0.016f);
@@ -31,13 +29,11 @@ namespace BetterSeaglideBZ
             Intensity = PlayerPrefs.GetFloat("Intensity", 0.9f);
             Range = PlayerPrefs.GetFloat("Range", 40f);
             spotAngle = PlayerPrefs.GetFloat("Size", 70f);
-            seaglideSpeed = PlayerPrefs.GetFloat("Speed", 1f);
             ToggleColor = PlayerPrefsExtra.GetBool("ToggleColor", false);
-
-            maprValue = PlayerPrefs.GetFloat("MapR", 0.226f);
-            mapgValue = PlayerPrefs.GetFloat("MapG", 0.567f);
-            mapbValue = PlayerPrefs.GetFloat("MapB", 0.853f);
-            mapAlpha = PlayerPrefs.GetFloat("MapAlpha", 1.0f);
+            SeaGlideColor = PlayerPrefsExtra.GetBool("SeaGlideColor", false);
+            seagliderValue = PlayerPrefs.GetFloat("SeaglideR", 0.016f);
+            seaglidegValue = PlayerPrefs.GetFloat("SeaglideG", 1.000f);
+            seaglidebValue = PlayerPrefs.GetFloat("SeaglideB", 1.000f);
         }
     }
 
@@ -55,10 +51,10 @@ namespace BetterSeaglideBZ
                 Config.ToggleColor = e.Value;
                 PlayerPrefsExtra.SetBool("ToggleColor", e.Value);
             }
-            if (e.Id == "toggleMapColor")
+            else if (e.Id == "seaglidecolor")
             {
-                Config.ToggleMapColor = e.Value;
-                PlayerPrefsExtra.SetBool("ToggleMapColor", e.Value);
+                Config.SeaGlideColor = e.Value;
+                PlayerPrefsExtra.SetBool("SeaGlideColor", e.Value);
             }
         }
 
@@ -94,89 +90,73 @@ namespace BetterSeaglideBZ
                 Config.spotAngle = e.Value;
                 PlayerPrefs.SetFloat("Size", e.Value);
             }
-            else if (e.Id == "speed")
+            else if (e.Id == "seaglider")
             {
-                Config.seaglideSpeed = e.Value;
-                PlayerPrefs.SetFloat("Speed", e.Value);
+                Config.seagliderValue = e.Value;
+                PlayerPrefs.SetFloat("SeaglideR", e.Value);
             }
-            else if (e.Id == "mapr")
+            else if (e.Id == "seaglideg")
             {
-                Config.maprValue = e.Value;
-                PlayerPrefs.SetFloat("MapR", e.Value);
+                Config.seaglidegValue = e.Value;
+                PlayerPrefs.SetFloat("SeaglideG", e.Value);
             }
-            else if (e.Id == "mapg")
+            else if (e.Id == "seaglideb")
             {
-                Config.mapgValue = e.Value;
-                PlayerPrefs.SetFloat("MapG", e.Value);
-            }
-            else if (e.Id == "mapb")
-            {
-                Config.mapbValue = e.Value;
-                PlayerPrefs.SetFloat("MapB", e.Value);
-            }
-            else if (e.Id == "mapalpha")
-            {
-                Config.mapAlpha = e.Value;
-                PlayerPrefs.SetFloat("MapAlpha", e.Value);
+                Config.seaglidebValue = e.Value;
+                PlayerPrefs.SetFloat("SeaglideB", e.Value);
             }
         }
 
         public override void BuildModOptions()
         {
-            if (Config.ToggleColor && Config.ToggleMapColor == false)
+            if (Config.ToggleColor && Config.SeaGlideColor == false)
             {
                 AddToggleOption("toggleColor", "BetteSeaglide Light Color Enabled", Config.ToggleColor);
-                AddToggleOption("toggleMapColor", "BetterSeaglide Map Color Enabled", Config.ToggleMapColor);
+                AddToggleOption("seaglidecolor", "Show BetterSeaglide Color RGB Sliders", Config.SeaGlideColor);
                 AddSliderOption("r", "Red", 0, 255, Config.rValue);
                 AddSliderOption("g", "Green", 0, 255, Config.gValue);
                 AddSliderOption("b", "Blue", 0, 255, Config.bValue);
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
-                AddSliderOption("speed", "Seaglide Speed", 1f, 10000f, Config.seaglideSpeed);
                 Config.Load();
 
             }
-            else if(Config.ToggleMapColor && Config.ToggleColor == false)
+            else if(Config.SeaGlideColor && Config.ToggleColor == false)
             {
                 AddToggleOption("toggleColor", "Better Seaglide Light Color Enabled", Config.ToggleColor);
-                AddToggleOption("toggleMapColor", "Better Seaglide Map Color Enabled", Config.ToggleMapColor);
-                AddSliderOption("mapr", "Map Red", 0, 255, Config.maprValue);
-                AddSliderOption("mapg", "Map Green", 0, 255, Config.mapgValue);
-                AddSliderOption("mapb", "Map Blue", 0, 255, Config.mapbValue);
-                AddSliderOption("mapalpha", "Seaglide Map Alpha", 1, 100, Config.mapAlpha);
+                AddToggleOption("seaglidecolor", "Show BetterSeaglide Color RGB Sliders", Config.SeaGlideColor);
+                AddSliderOption("seaglider", "Seaglide Red", 0, 255, Config.seagliderValue);
+                AddSliderOption("seaglideg", "Seaglide Green", 0, 255, Config.seaglidegValue);
+                AddSliderOption("seaglideb", "Seaglide Blue", 0, 255, Config.seaglidebValue);
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
-                AddSliderOption("speed", "Seaglide Speed", 1f, 10000f, Config.seaglideSpeed);
                 Config.Load();
             }
-            else if( Config.ToggleColor & Config.ToggleMapColor)
+            else if( Config.ToggleColor & Config.SeaGlideColor)
             {
                 AddToggleOption("toggleColor", "Better Seaglide Light Color Enabled", Config.ToggleColor);
-                AddToggleOption("toggleMapColor", "Better Seaglide Map Color Enabled", Config.ToggleMapColor);
+                AddToggleOption("seaglidecolor", "Show BetterSeaglide Color RGB Sliders", Config.SeaGlideColor);
                 AddSliderOption("r", "Red", 0, 255, Config.rValue);
                 AddSliderOption("g", "Green", 0, 255, Config.gValue);
                 AddSliderOption("b", "Blue", 0, 255, Config.bValue);
-                AddSliderOption("mapr", "Map Red", 0, 255, Config.maprValue);
-                AddSliderOption("mapg", "Map Green", 0, 255, Config.mapgValue);
-                AddSliderOption("mapb", "Map Blue", 0, 255, Config.mapbValue);
-                AddSliderOption("mapalpha", "Seaglide Map Alpha", 1, 100, Config.mapAlpha);
+                AddSliderOption("seaglider", "Seaglide Red", 0, 255, Config.seagliderValue);
+                AddSliderOption("seaglideg", "Seaglide Green", 0, 255, Config.seaglidegValue);
+                AddSliderOption("seaglideb", "Seaglide Blue", 0, 255, Config.seaglidebValue);
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
-                AddSliderOption("speed", "Seaglide Speed", 1f, 10000f, Config.seaglideSpeed);
                 Config.Load();
 
             }
             else
             {
                 AddToggleOption("toggleColor", "Better Seaglide Light Color Enabled", Config.ToggleColor);
-                AddToggleOption("toggleMapColor", "Better Seaglide Map Color Enabled", Config.ToggleMapColor);
+                AddToggleOption("seaglidecolor", "Show BetterSeaglide Color RGB Sliders", Config.SeaGlideColor);
                 AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
-                AddSliderOption("speed", "Seaglide Speed", 1f, 10000f, Config.seaglideSpeed);
                 Config.Load();
             }
         }

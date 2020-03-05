@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace BetterSeaglide.Patches
+namespace BetterSeaglideBZ.Patches
 {
     [HarmonyPatch(typeof(Seaglide))]
     [HarmonyPatch("Update")]
@@ -14,7 +14,6 @@ namespace BetterSeaglide.Patches
 
             var sgColor = __instance.GetAllComponentsInChildren<SkinnedMeshRenderer>();
             var pickupablesgColor = __instance.GetAllComponentsInChildren<MeshRenderer>();
-
             foreach (var seaglideColor in sgColor)
             {
                 if (seaglideColor.name.Contains("SeaGlide_geo"))
@@ -22,11 +21,11 @@ namespace BetterSeaglide.Patches
                     seaglideColor.material.color = new Color32(Convert.ToByte(Config.seagliderValue), Convert.ToByte(Config.seaglidegValue), Convert.ToByte(Config.seaglidebValue), 1);
                 }
             }
-            foreach(var droppedseaglideColor in pickupablesgColor)
+            foreach (var droppedseaglideColor in pickupablesgColor)
             {
                 if (droppedseaglideColor.name.Contains("SeaGlide_01_TP"))
                 {
-                    droppedseaglideColor.material.color = new Color32(Convert.ToByte(Config.seagliderValue), Convert.ToByte(Config.seaglidegValue), Convert.ToByte(Config.seaglidebValue), 100);
+                   droppedseaglideColor.material.color = new Color32(Convert.ToByte(Config.seagliderValue), Convert.ToByte(Config.seaglidegValue), Convert.ToByte(Config.seaglidebValue), 100);
                 }
             }
             return true;
