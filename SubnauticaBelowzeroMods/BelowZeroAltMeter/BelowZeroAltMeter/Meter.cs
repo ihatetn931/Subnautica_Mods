@@ -20,6 +20,8 @@ namespace BelowZeroAltMeter
                     var depth = Mathf.FloorToInt(Player.main.GetDepth());
                     if (altitude != 0 && depth == 0)
                     {
+                        /*Debug.Log($"" +
+                            $"suffixText.text is {__instance.suffixText.text}");*/
                         __instance.suffixText.text = "m↑";
                         __instance.depthText.text = altitude.ToString();
                     }

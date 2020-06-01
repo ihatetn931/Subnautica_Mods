@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Craftables.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Menus\MenuConfigWhiteLights.cs" />
@@ -84,6 +85,9 @@
     <Compile Include="Patches\SeaglideSpeedPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialColor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Patches\SpeedPatches\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

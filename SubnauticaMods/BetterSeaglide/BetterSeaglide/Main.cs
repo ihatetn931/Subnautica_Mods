@@ -13,6 +13,7 @@ namespace BetterSeaglide
         internal const string bsg = "BetterSeaglide";
         private static readonly string WhiteLightsDll = "../WhiteLights/WhiteLights.dll";
         public static string whiteLightsPath = Path.Combine(GetAssemblyDirectory, WhiteLightsDll);
+        public static bool pGlide;
 
         private static string GetAssemblyDirectory
         {
