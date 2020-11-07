@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DockLightsToggle</RootNamespace>
     <AssemblyName>DockLightsToggle</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,16 +31,21 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony-1.2.0.1">
-      <HintPath>G:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\0Harmony-1.2.0.1.dll</HintPath>
+    <Reference Include="0Harmony">
+      <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>G:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp_publicized">
+      <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\publicized_assemblies\Assembly-CSharp_publicized.dll</HintPath>
     </Reference>
-    <Reference Include="SMLHelper">
-      <HintPath>G:\Steam Games SSD\steamapps\common\SubnauticaZero\QMods\SMLHelper_BZ\SMLHelper.dll</HintPath>
+    <Reference Include="QModInstaller">
+      <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
+    </Reference>
+    <Reference Include="SMLHelper, Version=2.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\QMods\SMLHelper_BZ\SMLHelper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,15 +53,16 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>G:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>G:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>G:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

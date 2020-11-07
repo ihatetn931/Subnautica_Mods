@@ -9,7 +9,7 @@ namespace DockLightsToggleBZ
     public class LightState
     {
         public bool SeaTruckLightState;// { get; set; }
-        public bool HoveBikeLightState;
+        //public bool HoveBikeLightState;
     }
 
     public static class ConfigFile
@@ -48,7 +48,7 @@ namespace DockLightsToggleBZ
                 LightState myObject = new LightState();
                 string json = JsonUtility.ToJson(myObject);
                 myObject.SeaTruckLightState = false;
-                myObject.HoveBikeLightState = false;
+               // myObject.HoveBikeLightState = false;
                 File.WriteAllText(lightStatePath, json);
                 AttemptToLoad();
 
@@ -67,7 +67,7 @@ namespace DockLightsToggleBZ
                 LightState myObject = new LightState
                 {
                     SeaTruckLightState = state,
-                    HoveBikeLightState = state
+                    //HoveBikeLightState = state
                 };
                 string toJson = JsonUtility.ToJson(myObject);
                 JsonUtility.FromJsonOverwrite(toJson, myObject);

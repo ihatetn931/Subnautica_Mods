@@ -11,6 +11,11 @@ namespace BetterSeaglideBZ
         public float b = 1.000f;
         public float a = 1;
 
+        public float sgR = 0.016f;
+        public float sgG = 1.000f;
+        public float sgB = 1.000f;
+        public float sgA = 1.000f;
+
         public float mapr = 0.226f;
         public float mapg = 0.567f;
         public float mapb = 0.853f;
@@ -26,6 +31,10 @@ namespace BetterSeaglideBZ
             mapg = c.g;
             mapb = c.b;
             mapa = c.a;
+            sgR = c.a;
+            sgG = c.g;
+            sgB = c.b;
+            sgA = c.a;
         }
 
 
@@ -38,11 +47,22 @@ namespace BetterSeaglideBZ
         {
             if(value)
             {
-                return new Color32(Convert.ToByte(Config.rValue),Convert.ToByte(Config.gValue), Convert.ToByte(Config.bValue),1);
+                return new Color(SeaglideConfig.rValue,SeaglideConfig.gValue, SeaglideConfig.bValue,1);
             }
             else
             {
-                return new Color(r, g, b, 1.0f);
+                return new Color(r, g, b, 1);
+            }
+        }
+        public Color ColorToColor(bool value)
+        {
+            if (value)
+            {
+                return new Color(SeaglideConfig.seagliderValue, SeaglideConfig.seaglidegValue, SeaglideConfig.seaglidebValue, 1);
+            }
+            else
+            {
+                return new Color(sgR, sgG, sgB, sgA);
             }
         }
     }

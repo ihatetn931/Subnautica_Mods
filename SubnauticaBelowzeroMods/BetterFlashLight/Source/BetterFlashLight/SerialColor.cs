@@ -28,7 +28,7 @@ namespace BetterFlashLightBZ
         {
             if(value)
             {
-                return new Color(Config.rValue, Config.gValue, Config.bValue, a);
+                return new Color(ConfigMenu.rValue, ConfigMenu.gValue, ConfigMenu.bValue, a);
             }
             else
             {

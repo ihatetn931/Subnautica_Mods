@@ -1,20 +1,27 @@
 ﻿using System.Reflection;
-using Harmony;
+using HarmonyLib;
+using QModManager.API.ModLoading;
+using QModManager.Utility;
 using SMLHelper.V2.Handlers;
+using SMLHelper.V2.Json.ExtensionMethods;
 
 namespace BetterSeaglideBZ
 {
+    [QModCore]
     public class MainPatch
     {
+        public static bool pGlide;
+        internal static SeaglideConfig SeaglideC { get; } = OptionsPanelHandler.Main.RegisterModOptions<SeaglideConfig>();
         public static void FirstStart()
         {
-            Config.Load();
-            OptionsPanelHandler.RegisterModOptions(new Options());
             SecondStart();
         }
+
+        [QModPatch]
         public static void SecondStart()
         {
-            HarmonyInstance.Create("BetterSeaglideBZ.mod").PatchAll(Assembly.GetExecutingAssembly());
+            Harmony harmony = new Harmony("BetterSeaglideBZ.mod");
+            harmony.PatchAll();
         }
     }
 }

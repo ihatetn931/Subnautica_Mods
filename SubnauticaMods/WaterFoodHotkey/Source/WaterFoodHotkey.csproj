@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WaterFoodHotkey</RootNamespace>
     <AssemblyName>WaterFoodHotkey</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,13 +31,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony-1.2.0.1">
-      <HintPath>F:\SteamGames2\steamapps\common\Subnautica\Subnautica_Data\Managed\0Harmony-1.2.0.1.dll</HintPath>
+    <Reference Include="0Harmony">
+      <HintPath>F:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>F:\SteamGames2\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="QModInstaller, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
     </Reference>
     <Reference Include="SMLHelper">
       <HintPath>F:\SteamGames2\steamapps\common\Subnautica\QMods\Modding Helper\SMLHelper.dll</HintPath>
@@ -56,8 +62,13 @@
     <Reference Include="UnityEngine.InputLegacyModule">
       <HintPath>F:\SteamGames2\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigFile.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="MenuConfig.cs" />
     <Compile Include="Patches\Food_Patch.cs" />

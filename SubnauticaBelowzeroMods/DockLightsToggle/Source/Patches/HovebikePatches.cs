@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿/*using Harmony;
 using System;
 using UnityEngine;
 using SMLHelper.V2.Handlers;
@@ -70,4 +70,4 @@ namespace DockLightsToggleBZ.Patches
             return true;
         }
     }
-}
+}*/

@@ -2,7 +2,7 @@
   "Id": "DockingLightsToggle",
   "DisplayName": "DockLightsToggle",
   "Author": "ihatetn931",
-  "Version": "1.0.2",
+  "Version": "1.0.2a",
   "Requires": [ "" ],
   "Enable": true,
   "Game": "BelowZero",

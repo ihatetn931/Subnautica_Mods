@@ -1,7 +1,9 @@
 ﻿
+using HarmonyLib;
+using QModManager.API.ModLoading;
 using System;
 using System.Reflection;
-using Harmony;
+
 using UnityEngine;
 
 namespace DockLightsToggleBZ.Patches
@@ -10,6 +12,7 @@ namespace DockLightsToggleBZ.Patches
     [HarmonyPatch("Update")]
     class Exosuit_Update_Patch
     {
+        [QModPrePatch]
         private static bool Prefix(Exosuit __instance)
         {
             var exosuitLights = __instance.transform.Find("lights_parent").GetComponentsInChildren<Light>();

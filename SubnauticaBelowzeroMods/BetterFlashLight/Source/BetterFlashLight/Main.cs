@@ -8,7 +8,7 @@ namespace BetterFlashLightBZ
     {
         public static void FirstStart()
         {
-            Config.Load();
+            ConfigMenu.Load();
             OptionsPanelHandler.RegisterModOptions(new Options());
             SecondStart();
         }

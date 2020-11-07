@@ -1,8 +1,10 @@
-﻿using SMLHelper.V2.Handlers;
+﻿/*using SMLHelper.V2.Handlers;
 using SMLHelper.V2.Options;
 using SMLHelper.V2.Utility;
 using System;
 using UnityEngine;
+using QModManager.API;
+
 
 namespace BetterSeaglideBZ
 {
@@ -26,7 +28,8 @@ namespace BetterSeaglideBZ
             rValue = PlayerPrefs.GetFloat("R", 0.016f);
             gValue = PlayerPrefs.GetFloat("G", 1.000f);
             bValue = PlayerPrefs.GetFloat("B", 1.000f);
-            Intensity = PlayerPrefs.GetFloat("Intensity", 0.9f);
+            //Intensity = PlayerPrefs.GetFloat("Intensity", 0.9f);
+            Intensity = PlayerPrefs.GetFloat("Intensity", 9f);
             Range = PlayerPrefs.GetFloat("Range", 40f);
             spotAngle = PlayerPrefs.GetFloat("Size", 70f);
             ToggleColor = PlayerPrefsExtra.GetBool("ToggleColor", false);
@@ -34,6 +37,7 @@ namespace BetterSeaglideBZ
             seagliderValue = PlayerPrefs.GetFloat("SeaglideR", 0.016f);
             seaglidegValue = PlayerPrefs.GetFloat("SeaglideG", 1.000f);
             seaglidebValue = PlayerPrefs.GetFloat("SeaglideB", 1.000f);
+
         }
     }
 
@@ -78,16 +82,19 @@ namespace BetterSeaglideBZ
             else if (e.Id == "intensity")
             {
                 Config.Intensity = e.Value;
+                QModServices.Main.AddCriticalMessage($"Intensity: {e.Value}");
                 PlayerPrefs.SetFloat("Intensity", e.Value);
             }
             else if (e.Id == "range")
             {
                 Config.Range = e.Value;
+                QModServices.Main.AddCriticalMessage($"Range: {e.Value}");
                 PlayerPrefs.SetFloat("Range", e.Value);
             }
             else if (e.Id == "size")
             {
                 Config.spotAngle = e.Value;
+                QModServices.Main.AddCriticalMessage($"spotAngle: {e.Value}");
                 PlayerPrefs.SetFloat("Size", e.Value);
             }
             else if (e.Id == "seaglider")
@@ -116,7 +123,8 @@ namespace BetterSeaglideBZ
                 AddSliderOption("r", "Red", 0, 255, Config.rValue);
                 AddSliderOption("g", "Green", 0, 255, Config.gValue);
                 AddSliderOption("b", "Blue", 0, 255, Config.bValue);
-                AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+               // AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+                AddSliderOption("intensity", "Light Brightness", 0f, 1f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
                 Config.Load();
@@ -129,7 +137,8 @@ namespace BetterSeaglideBZ
                 AddSliderOption("seaglider", "Seaglide Red", 0, 255, Config.seagliderValue);
                 AddSliderOption("seaglideg", "Seaglide Green", 0, 255, Config.seaglidegValue);
                 AddSliderOption("seaglideb", "Seaglide Blue", 0, 255, Config.seaglidebValue);
-                AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+                //AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+                AddSliderOption("intensity", "Light Brightness", 0f, 1f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
                 Config.Load();
@@ -144,7 +153,8 @@ namespace BetterSeaglideBZ
                 AddSliderOption("seaglider", "Seaglide Red", 0, 255, Config.seagliderValue);
                 AddSliderOption("seaglideg", "Seaglide Green", 0, 255, Config.seaglidegValue);
                 AddSliderOption("seaglideb", "Seaglide Blue", 0, 255, Config.seaglidebValue);
-                AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+               // AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+                AddSliderOption("intensity", "Light Brightness", 0f, 1f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
                 Config.Load();
@@ -154,11 +164,12 @@ namespace BetterSeaglideBZ
             {
                 AddToggleOption("toggleColor", "Better Seaglide Light Color Enabled", Config.ToggleColor);
                 AddToggleOption("seaglidecolor", "Show BetterSeaglide Color RGB Sliders", Config.SeaGlideColor);
-                AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+                //AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
+                AddSliderOption("intensity", "Light Brightness", 0f, 1f, Config.Intensity);
                 AddSliderOption("range", "Light Range", 40f, 100f, Config.Range);
                 AddSliderOption("size", "Light Cone Size", 70f, 120f, Config.spotAngle);
                 Config.Load();
             }
         }
     }
-}
+}*/

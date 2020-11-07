@@ -9,7 +9,7 @@ namespace BetterFlashLightBZ.Patches
     {
         public static bool Prefix(FlashLight __instance)
         {
-            if (Config.ToggleColor)
+            if (ConfigMenu.ToggleColor)
             {
                 if (__instance.toggleLights.lightsParent != null)
                 {
@@ -20,15 +20,15 @@ namespace BetterFlashLightBZ.Patches
                         {
                             if (allLights.gameObject.name.Contains("x_flashlightCone"))
                             {
-                                allLights.color = Config.FlashLightColor.ToColor(true);
-                                allLights.intensity = Config.Intensity;
-                                allLights.range = Config.Range;
+                                allLights.color = ConfigMenu.FlashLightColor.ToColor(true);
+                                allLights.intensity = ConfigMenu.Intensity;
+                                allLights.range = ConfigMenu.Range;
                             }
                             else
                             {
-                                allLights.color = Config.FlashLightColor.ToColor(true);
-                                allLights.intensity = Config.Intensity;
-                                allLights.range = Config.Range;
+                                allLights.color = ConfigMenu.FlashLightColor.ToColor(true);
+                                allLights.intensity = ConfigMenu.Intensity;
+                                allLights.range = ConfigMenu.Range;
                             }
                             break;
                         }
@@ -44,13 +44,13 @@ namespace BetterFlashLightBZ.Patches
                     {
                         if (allLights.gameObject.name.Contains("x_flashlightCone"))
                         {
-                            allLights.color = Config.FlashLightColor.ToColor(false);
+                            allLights.color = ConfigMenu.FlashLightColor.ToColor(false);
                             allLights.intensity = 1.000f;
                             allLights.range = 50.000f;
                         }
                         else
                         {
-                            allLights.color = Config.FlashLightColor.ToColor(false);
+                            allLights.color = ConfigMenu.FlashLightColor.ToColor(false);
                             allLights.intensity = 1.000f;
                             allLights.range = 50.000f;
                         }

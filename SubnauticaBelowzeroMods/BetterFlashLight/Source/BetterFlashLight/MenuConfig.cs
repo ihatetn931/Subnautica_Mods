@@ -1,12 +1,13 @@
 ﻿using SMLHelper.V2.Handlers;
 using SMLHelper.V2.Options;
 using SMLHelper.V2.Utility;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace BetterFlashLightBZ
 {
-    public static class Config
+    public static class ConfigMenu
     {
         public static SerializableColor FlashLightColor = Color.white;
         public static float rValue;
@@ -35,10 +36,10 @@ namespace BetterFlashLightBZ
             ToggleChanged += Options_ToggleChanged;
         }
         public void Options_ToggleChanged(object sender, ToggleChangedEventArgs e)
-            { 
+        {
             if (e.Id == "toggleColor")
             {
-                Config.ToggleColor = e.Value;
+                ConfigMenu.ToggleColor = e.Value;
                 PlayerPrefsExtra.SetBool("ToggleColor", e.Value);
             }
         }
@@ -47,47 +48,47 @@ namespace BetterFlashLightBZ
         {
             if (e.Id == "r")
             {
-                Config.rValue = e.Value;
+                ConfigMenu.rValue = e.Value;
                 PlayerPrefs.SetFloat("R", e.Value);
             }
             else if (e.Id == "g")
             {
-                Config.gValue = e.Value;
+                ConfigMenu.gValue = e.Value;
                 PlayerPrefs.SetFloat("G", e.Value);
             }
             else if (e.Id == "b")
             {
-                Config.bValue = e.Value;
+                ConfigMenu.bValue = e.Value;
                 PlayerPrefs.SetFloat("B", e.Value);
             }
             else if (e.Id == "intensity")
             {
-                Config.Intensity = e.Value;
+                ConfigMenu.Intensity = e.Value;
                 PlayerPrefs.SetFloat("Intensity", e.Value);
             }
             else if (e.Id == "range")
             {
-                Config.Range = e.Value;
+                ConfigMenu.Range = e.Value;
                 PlayerPrefs.SetFloat("Range", e.Value);
             }
         }
 
         public override void BuildModOptions()
         {
-            if (Config.ToggleColor)
+            if (ConfigMenu.ToggleColor)
             {
-                AddToggleOption("toggleColor", "Better Flashlight Enabled", Config.ToggleColor);
-                AddSliderOption("r", "Red", 0.0f, 1.000f, Config.rValue);
-                AddSliderOption("g", "Green", 0.0f, 1.000f, Config.gValue);
-                AddSliderOption("b", "Blue", 0.0f, 1.000f, Config.bValue);
-                AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, Config.Intensity);
-                AddSliderOption("range", "Light Range", 50.000f, 100.000f, Config.Range);
-                Config.Load();
+                AddToggleOption("toggleColor", "Better Flashlight Enabled", ConfigMenu.ToggleColor);
+                AddSliderOption("r", "Red", 0.0f, 1.000f, (float)Math.Ceiling(ConfigMenu.rValue));
+                AddSliderOption("g", "Green", 0.0f, 1.000f, (float)Math.Ceiling(ConfigMenu.gValue));
+                AddSliderOption("b", "Blue", 0.0f, 1.000f, (float)Math.Ceiling(ConfigMenu.bValue));
+                AddSliderOption("intensity", "Light Brightness", 0.000f, 1.999f, ConfigMenu.Intensity);
+                AddSliderOption("range", "Light Range", 50.000f, 100.000f, ConfigMenu.Range);
+                ConfigMenu.Load();
             }
             else
             {
-                AddToggleOption("toggleColor", "Better Flashlight Enabled", Config.ToggleColor);
-                Config.Load();
+                AddToggleOption("toggleColor", "Better Flashlight Enabled", ConfigMenu.ToggleColor);
+                ConfigMenu.Load();
             }
         }
     }

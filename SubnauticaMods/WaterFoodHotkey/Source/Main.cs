@@ -1,37 +1,51 @@
 using System.Reflection;
-using Harmony;
 using SMLHelper.V2.Handlers;
-
+using UnityEngine;
+using HarmonyLib;
+using QModManager.API.ModLoading;
+using QModManager.Utility;
+using System.IO;
 
 namespace WaterFoodHotkey
 {
+    [QModCore]
     public static class MainPatch
     {
         public static bool EditNameCheck = false;
         public static bool SurvivalCheck = false;
+        public static WaterFoodHotKeyStates settings;
 
         public static void FirstStart()
         {
-            Config.Load();
-            OptionsPanelHandler.RegisterModOptions(new Options());
-#if DEBUG
-
-            Debug.Log($"[WaterFoodHotkey] :: WaterHotKey is '{Config.WaterHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: FoodHotKey is '{Config.FoodHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: TextValue is '{Config.TextValue}'");
-            Debug.Log($"[WaterFoodHotkey] :: ToggleWaterHotKey is '{Config.ToggleWaterHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: ToggleFoodHotKey is '{Config.ToggleFoodHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: Foodpercentage is '{Config.FoodPercentage}'");
-            Debug.Log($"[WaterFoodHotkey] :: WaterPercentage is '{Config.WaterPercentage}'");
-            Debug.Log($"[WaterFoodHotkey] Loaded Successfully");
-#endif
-            SecondStart();
-
+            ConfigFile startupHandler = new ConfigFile();
+            if (!File.Exists(ConfigFile.lightStatePath))
+            {
+                startupHandler.AttemptToCreate();
+                if(startupHandler.AttemptToCreate())
+                {
+                    startupHandler.AttemptToLoad();
+                }
+            }
+            ///QModManager.Utility.Logger.Log(QModManager.Utility.Logger.Level.Info, $"Settings: {settings}", null, true);
+            if (settings != null)
+            {
+                if (settings.UseThisConfig)
+                {
+                    startupHandler.AttemptToLoad();
+                    SecondStart();
+                }
+                else
+                {
+                    Config.Load();
+                    OptionsPanelHandler.RegisterModOptions(new Options());
+                    SecondStart();
+                }
+            }
         }
-
+        [QModPatch]
         public static void SecondStart()
         {
-            HarmonyInstance harmony = HarmonyInstance.Create("WaterFoodHotkey.mod");
+            Harmony harmony = new Harmony("WaterFoodHotkey.mod");
 
             MethodInfo pInfo = AccessTools.Method(typeof(Player), "Update");
             harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.Water_Patch), nameof(Patches.Water_Patch.Patch_Player_Water)), null);

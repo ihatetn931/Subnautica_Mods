@@ -1,7 +1,8 @@
-﻿using Harmony;
-using System;
+﻿using System;
 using UnityEngine;
 using SMLHelper.V2.Handlers;
+using HarmonyLib;
+using QModManager.API.ModLoading;
 
 namespace DockLightsToggleBZ.Patches
 {
@@ -10,9 +11,9 @@ namespace DockLightsToggleBZ.Patches
     [HarmonyPatch("Update")]
     public class SeaTruckLights_Update_Patch
     {
+        [QModPrePatch]
         private static bool Prefix(SeaTruckLights __instance)
         {
-
             if (MainPatch.seaTruckIsDocked == true)
             {
                 if (__instance.lightsActive == true)
@@ -27,7 +28,6 @@ namespace DockLightsToggleBZ.Patches
             {
                 if (MainPatch.state.SeaTruckLightState == true)
                 {
-
                     if (__instance.transform.Find("floodlight") != null)
                     {
                         var seaTruckLight = __instance.transform.Find("floodlight").GetComponentsInChildren<Light>(false);
