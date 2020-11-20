@@ -1,4 +1,4 @@
-# Subnautica_Mods
+# SubnauticaMods
 All my mods for Subnautica and Subnautica Below Zero
 
 Subnautica Mods
