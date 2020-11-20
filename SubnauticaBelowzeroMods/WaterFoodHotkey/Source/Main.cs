@@ -1,43 +1,73 @@
 using System.Reflection;
-using Harmony;
+using HarmonyLib;
+using QModManager.API.ModLoading;
 using SMLHelper.V2.Handlers;
 using UnityEngine;
 
 namespace WaterFoodHotkeyBZ
 {
+    [QModCore]
     public static class MainPatch
     {
-       //// public static Configkey keyConfig;
+        //// public static Configkey keyConfig;
         //public static TextDisplay textConfig;
         //public static ToggleKeys toggleConfig;
-       // public static PercentageValues percentageConfig;
+        // public static PercentageValues percentageConfig;
+        internal static Config HotkeyConfig { get; } = OptionsPanelHandler.Main.RegisterModOptions<Config>();
 
         public static bool EditNameCheck = false;
+        public static KeyCode WaterHotKey;
+        public static KeyCode FoodHotKey;
+        public static KeyCode MedHotKey;
 
+        public static string TextValue;
+
+        public static bool ToggleWaterHotKey;
+        public static bool ToggleFoodHotKey;
+        public static bool ToggleMedHotKey;
+
+        public static float WaterPercentage;
+        public static float FoodPercentage;
+        public static float HealthPercentage;
+        [QModPatch]
         public static void FirstStart()
         {
             //Build And Load Settings Menu
-            Config.Load();
-            OptionsPanelHandler.RegisterModOptions(new Options());
+            //Config.Load();
+            //HotkeyConfig.Load();
+            WaterHotKey = HotkeyConfig.SetWaterHotkey;
+            FoodHotKey = HotkeyConfig.SetFoodHotkey;
+            MedHotKey = HotkeyConfig.SetMedHotkey;
+
+            TextValue = HotkeyConfig.Text;
+
+            ToggleWaterHotKey = HotkeyConfig.ToggleWater;
+            ToggleFoodHotKey = HotkeyConfig.ToggleFood;
+            ToggleMedHotKey = HotkeyConfig.ToggleHealth;
+
+            WaterPercentage = HotkeyConfig.WaterPercent;
+            FoodPercentage = HotkeyConfig.FoodPercent;
+            HealthPercentage = HotkeyConfig.HealthPercent;
+            //OptionsPanelHandler.RegisterModOptions(new Options());
 #if DEBUG
 
-            Debug.Log($"[WaterFoodHotkey] :: WaterHotKey is '{Config.WaterHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: FoodHotKey is '{Config.FoodHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: MedHotKey is '{Config.MedHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: TextValue is '{Config.TextValue}'");
-            Debug.Log($"[WaterFoodHotkey] :: ToggleWaterHotKey is '{Config.ToggleWaterHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: ToggleFoodHotKey is '{Config.ToggleFoodHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: ToggleMedHotKey is '{Config.ToggleMedHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: WaterPercentage is '{Config.WaterPercentage}'");
-            Debug.Log($"[WaterFoodHotkey] :: FoodPercentage is '{Config.FoodPercentage}'");
-            Debug.Log($"[WaterFoodHotkey] :: HealthPercentage is '{Config.HealthPercentage}'");
+            Debug.Log($"[WaterFoodHotkey] :: WaterHotKey is '{WaterHotKey}'");
+            Debug.Log($"[WaterFoodHotkey] :: FoodHotKey is '{FoodHotKey}'");
+            Debug.Log($"[WaterFoodHotkey] :: MedHotKey is '{MedHotKey}'");
+            Debug.Log($"[WaterFoodHotkey] :: TextValue is '{TextValue}'");
+            Debug.Log($"[WaterFoodHotkey] :: ToggleWaterHotKey is '{ToggleWaterHotKey}'");
+            Debug.Log($"[WaterFoodHotkey] :: ToggleFoodHotKey is '{ToggleFoodHotKey}'");
+            Debug.Log($"[WaterFoodHotkey] :: ToggleMedHotKey is '{ToggleMedHotKey}'");
+            Debug.Log($"[WaterFoodHotkey] :: WaterPercentage is '{WaterPercentage}'");
+            Debug.Log($"[WaterFoodHotkey] :: FoodPercentage is '{FoodPercentage}'");
+            Debug.Log($"[WaterFoodHotkey] :: HealthPercentage is '{HealthPercentage}'");
 #endif
             //Patches
-            HarmonyInstance harmony = HarmonyInstance.Create("WaterFoodHotkey.mod");
-            // harmony.PatchAll(Assembly.GetExecutingAssembly());
+            Harmony harmony = new Harmony("WaterFoodHotkey.mod");
+            harmony.PatchAll();
 
             //Player Patch for hotkey
-            MethodInfo pInfo = AccessTools.Method(typeof(Player), "Update");
+            MethodInfo pInfo = AccessTools.Method(typeof(Player), nameof(Player.Update));
             harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.PlayerWater_Patch), nameof(Patches.PlayerWater_Patch.Patch_Player_Water)), null);
             harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.PlayerHealth_Patch), nameof(Patches.PlayerHealth_Patch.Patch_Player_Health)), null);
             harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.PlayerFood_Patch), nameof(Patches.PlayerFood_Patch.Patch_Player_Food)), null);

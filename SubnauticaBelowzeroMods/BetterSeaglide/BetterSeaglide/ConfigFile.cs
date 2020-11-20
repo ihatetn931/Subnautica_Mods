@@ -11,25 +11,11 @@ using Logger = QModManager.Utility.Logger;
 
 namespace BetterSeaglideBZ
 {
-    [Menu("BetterSeaglide Options",SaveOn =MenuAttribute.SaveEvents.ChangeValue)]
+    [Menu("BetterSeaglide Options",SaveOn =MenuAttribute.SaveEvents.ChangeValue, LoadOn =MenuAttribute.LoadEvents.MenuRegistered)]
     //[ConfigFile("betterseaglideoptions")]
     public class SeaglideConfig : ConfigFile
     {
-        public static SerializableColor FlashLightColor = new Color(0.016f, 1.000f, 1.000f);
-        public static SerializableColor SeaglideModelColor = new Color(1.000f, 1.000f, 1.000f);
-        public static SerializableColor MapColor = new Color(0.226f, 0.567f, 0.853f, 1.000f);
-        public static float rValue;
-        public static float gValue;
-        public static float bValue;
-        public static float Intensity;
-        public static float Range;
-        public static bool ToggleColor;
-        public static bool SeaglideColor;
-        public static bool SeaglideLightOptions;
-        public static float spotAngle;
-        public static float seagliderValue;
-        public static float seaglidegValue;
-        public static float seaglidebValue;
+
 
         [Toggle("Enable Seaglide Light Options", Id = "LightOptions"), OnChange(nameof(CheckboxToggleEvent))]
         public bool ToggleSeaglideLightOptions = false;
@@ -64,15 +50,15 @@ namespace BetterSeaglideBZ
             switch (e.Id)
             {
                 case "LightColor":
-                    ToggleColor = e.Value;
+                    MainPatch.ToggleColor = e.Value;
                     //Logger.Log(Logger.Level.Info, $"[LightColor] Id:{e.Id}  Value:{e.Value}");
                     break;
                 case "SeaglideColor":
-                    SeaglideColor = e.Value;
+                    MainPatch.SeaglideColor = e.Value;
                     //Logger.Log(Logger.Level.Info, $"[LightColor] Id:{e.Id}  Value:{e.Value}");
                     break;
                 case "LightOptions":
-                    SeaglideLightOptions = e.Value;
+                    MainPatch.SeaglideLightOptions = e.Value;
                     //Logger.Log(Logger.Level.Info, $"[LightColor] Id:{e.Id}  Value:{e.Value}");
                     break;
             }
@@ -83,31 +69,31 @@ namespace BetterSeaglideBZ
             switch (e.Id)
             {
                 case "LightBrightness":
-                    Intensity = e.Value;
+                    MainPatch.Intensity = e.Value;
                     break;
                 case "LightRange":
-                    Range = e.Value;
+                    MainPatch.Range = e.Value;
                     break;
                 case "LightConeSize":
-                    spotAngle = e.Value;
+                    MainPatch.spotAngle = e.Value;
                     break;
                 case "SeaglideRed":
-                    seagliderValue = e.Value;
+                    MainPatch.seagliderValue = e.Value;
                     break;
                 case "SeaglideGreen":
-                    seaglidegValue = e.Value;
+                    MainPatch.seaglidegValue = e.Value;
                     break;
                 case "SeaglideBlue":
-                    seaglidebValue = e.Value;
+                    MainPatch.seaglidebValue = e.Value;
                     break;
                 case "LightRed":
-                    rValue = e.Value;
+                    MainPatch.rValue = e.Value;
                     break;
                 case "LightGreen":
-                    gValue = e.Value;
+                    MainPatch.gValue = e.Value;
                     break;
                 case "LightBlue":
-                    bValue = e.Value;
+                    MainPatch.bValue = e.Value;
                     break;
             }
         }

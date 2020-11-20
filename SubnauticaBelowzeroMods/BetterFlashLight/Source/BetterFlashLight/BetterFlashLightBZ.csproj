@@ -41,13 +41,15 @@
     <Compile Include="SerialColor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="0Harmony-1.2.0.1, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\BelowZeroAltMeter\BelowZeroAltMeter\bin\Release\0Harmony-1.2.0.1.dll</HintPath>
+    <Reference Include="0Harmony">
+      <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp_publicized, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\publicized_assemblies\Assembly-CSharp_publicized.dll</HintPath>
+    </Reference>
+    <Reference Include="QModInstaller">
+      <HintPath>H:\Steam Games SSD\steamapps\common\SubnauticaZero\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
     </Reference>
     <Reference Include="SMLHelper, Version=2.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

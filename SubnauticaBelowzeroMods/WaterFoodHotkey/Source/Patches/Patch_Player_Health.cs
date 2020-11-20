@@ -18,18 +18,18 @@ namespace WaterFoodHotkeyBZ.Patches
             Inventory pInventory = Inventory.main;
 
             IList<InventoryItem> medKit = pInventory.container.GetItems(TechType.FirstAidKit);
-            if (Input.GetKeyDown(Config.MedHotKey) && Config.ToggleMedHotKey == false && !MainPatch.EditNameCheck)
+            if (Input.GetKeyDown(MainPatch.MedHotKey) && MainPatch.ToggleMedHotKey == false && !MainPatch.EditNameCheck)
             {
-                if (Config.TextValue == 0)
+                if (MainPatch.TextValue == "Standard")
                 {
                     ErrorMessage.AddWarning("You have Disabled The MedKit Hotkey");
                 }
-                else if (Config.TextValue == 1)
+                else if (MainPatch.TextValue == "Fancy")
                 {
                     Subtitles.Add("You Have Disabled The MedKit Hotkey");
                 }
             }
-            else if (Input.GetKeyDown(Config.MedHotKey) && Config.ToggleMedHotKey == true && !MainPatch.EditNameCheck)
+            else if (Input.GetKeyDown(MainPatch.MedHotKey) && MainPatch.ToggleMedHotKey == true && !MainPatch.EditNameCheck)
             {
 #if DEBUG
                 Debug.Log($"[WaterDrinkHotkey] :: PlayerHealth is {Player.main.GetComponent<LiveMixin>().health}");
@@ -38,7 +38,7 @@ namespace WaterFoodHotkeyBZ.Patches
                 Debug.Log($"[WaterDrinkHotkey] :: Player Freedom Gamemode is {GameModeUtils.IsOptionActive(GameModeOption.Freedom)}");
                 Debug.Log($"[WaterDrinkHotkey] :: Player Survival Gamemode is {GameModeUtils.IsOptionActive(GameModeOption.Survival)}");
 #endif
-                if (Player.main.GetComponent<LiveMixin>().health <= Config.HealthPercentage)
+                if (Player.main.GetComponent<LiveMixin>().health <= MainPatch.HealthPercentage)
                 {
                     if (medKit != null)
                     {
@@ -46,11 +46,11 @@ namespace WaterFoodHotkeyBZ.Patches
                     }
                     else
                     {
-                        if (Config.TextValue == 0)
+                        if (MainPatch.TextValue == "Standard")
                         {
                             ErrorMessage.AddWarning("You Do Not Have Any MedKits In your Inventory");
                         }
-                        else if (Config.TextValue == 1)
+                        else if (MainPatch.TextValue == "Fancy")
                         {
                             Subtitles.Add("You Do Not Have Any MedKits In your Inventory");
                         }
@@ -58,13 +58,13 @@ namespace WaterFoodHotkeyBZ.Patches
                 }
                 else
                 {
-                    if (Config.TextValue == 0)
+                    if (MainPatch.TextValue == "Standard")
                     {
-                        ErrorMessage.AddWarning($"You Do not need to use a FirstAidKit Your health is already above {Config.HealthPercentage}");
+                        ErrorMessage.AddWarning($"You Do not need to use a FirstAidKit Your health is already above {MainPatch.HealthPercentage}");
                     }
-                    else if (Config.TextValue == 1)
+                    else if (MainPatch.TextValue == "Fancy")
                     {
-                        Subtitles.Add($"You Do not need to use a FirstAidKit Your health is already above {Config.HealthPercentage }");
+                        Subtitles.Add($"You Do not need to use a FirstAidKit Your health is already above {MainPatch.HealthPercentage }");
                     }
                 }
             }

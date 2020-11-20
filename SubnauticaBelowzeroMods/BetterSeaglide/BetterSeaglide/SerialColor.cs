@@ -47,7 +47,7 @@ namespace BetterSeaglideBZ
         {
             if(value)
             {
-                return new Color(SeaglideConfig.rValue,SeaglideConfig.gValue, SeaglideConfig.bValue,1);
+                return new Color(MainPatch.rValue, MainPatch.gValue, MainPatch.bValue,1);
             }
             else
             {
@@ -58,7 +58,7 @@ namespace BetterSeaglideBZ
         {
             if (value)
             {
-                return new Color(SeaglideConfig.seagliderValue, SeaglideConfig.seaglidegValue, SeaglideConfig.seaglidebValue, 1);
+                return new Color(MainPatch.seagliderValue, MainPatch.seaglidegValue, MainPatch.seaglidebValue, 1);
             }
             else
             {

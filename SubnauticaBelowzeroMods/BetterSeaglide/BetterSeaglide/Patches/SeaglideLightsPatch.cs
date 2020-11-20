@@ -28,19 +28,19 @@ namespace BetterSeaglideBZ.Patches
                                 $"intensity is {allLights.intensity}\n" +
                                 $"range is {allLights.range}\n" +
                                 $"spotangle is {allLights.spotAngle}\n");*/
-                            if (SeaglideConfig.ToggleColor)
+                            if (MainPatch.ToggleColor)
                             {
-                                allLights.color = SeaglideConfig.FlashLightColor.LightToColor(true);
+                                allLights.color = MainPatch.FlashLightColor.LightToColor(true);
                             }
                             else
                             {
-                                allLights.color = SeaglideConfig.FlashLightColor.LightToColor(false);
+                                allLights.color = MainPatch.FlashLightColor.LightToColor(false);
                             }
-                            if (SeaglideConfig.SeaglideLightOptions)
+                            if (MainPatch.SeaglideLightOptions)
                             {
-                                allLights.spotAngle = SeaglideConfig.spotAngle;
-                                allLights.intensity = SeaglideConfig.Intensity;
-                                allLights.range = SeaglideConfig.Range;
+                                allLights.spotAngle = MainPatch.spotAngle;
+                                allLights.intensity = MainPatch.Intensity;
+                                allLights.range = MainPatch.Range;
                             }
                             else
                             {
@@ -60,13 +60,13 @@ namespace BetterSeaglideBZ.Patches
             {
                 if (seaglideColor.name.Contains("SeaGlide_geo"))
                 {
-                    if(SeaglideConfig.SeaglideColor)
+                    if(MainPatch.SeaglideColor)
                     {
-                        seaglideColor.material.color = SeaglideConfig.SeaglideModelColor.ColorToColor(true);
+                        seaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(true);
                     }
                     else
                     {
-                        seaglideColor.material.color = SeaglideConfig.SeaglideModelColor.ColorToColor(false);
+                        seaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(false);
                     }
                    // Logger.Log(Logger.Level.Info, $"[LightColor] Color:{seaglideColor.material.color}  ");
                    // seaglideColor.material.color = new Color(SeaglideConfig.seagliderValue, SeaglideConfig.seaglidegValue, SeaglideConfig.seaglidebValue, 1);
@@ -76,13 +76,13 @@ namespace BetterSeaglideBZ.Patches
             {
                 if (droppedseaglideColor.name.Contains("SeaGlide_01_TP"))
                 {
-                    if (SeaglideConfig.SeaglideColor)
+                    if (MainPatch.SeaglideColor)
                     {
-                        droppedseaglideColor.material.color = SeaglideConfig.SeaglideModelColor.ColorToColor(true);
+                        droppedseaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(true);
                     }
                     else
                     {
-                        droppedseaglideColor.material.color = SeaglideConfig.SeaglideModelColor.ColorToColor(false);
+                        droppedseaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(false);
                     }
                     //Logger.Log(Logger.Level.Info, $"[LightColor] DroppedColor:{droppedseaglideColor.material.color}  ");
                     //droppedseaglideColor.material.color = new Color(SeaglideConfig.seagliderValue, SeaglideConfig.seaglidegValue, SeaglideConfig.seaglidebValue, 1);

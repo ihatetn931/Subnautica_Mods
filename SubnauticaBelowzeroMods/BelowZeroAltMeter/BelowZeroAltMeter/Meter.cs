@@ -1,4 +1,5 @@
-﻿using Harmony;
+﻿using HarmonyLib;
+using QModManager.API.ModLoading;
 using UnityEngine;
 
 namespace BelowZeroAltMeter
@@ -10,7 +11,7 @@ namespace BelowZeroAltMeter
 
         internal class uGUI_DepthCompass_UpdateDepth_Patch
         {
-            [HarmonyPrefix]
+            [QModPrePatch]
             public static bool Prefix(uGUI_DepthCompass __instance)
             {
 
@@ -22,7 +23,7 @@ namespace BelowZeroAltMeter
                     {
                         /*Debug.Log($"" +
                             $"suffixText.text is {__instance.suffixText.text}");*/
-                        __instance.suffixText.text = "m↑";
+                        __instance.suffixText.text = "m ^";
                         __instance.depthText.text = altitude.ToString();
                     }
                 }

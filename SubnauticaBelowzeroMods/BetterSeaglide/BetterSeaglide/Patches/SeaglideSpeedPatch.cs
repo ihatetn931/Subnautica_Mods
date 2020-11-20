@@ -1,4 +1,4 @@
-﻿/*using HarmonyLib;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,8 @@ namespace BetterSeaglideBZ.Patches
         {
             var usingSeaglide = Player.main.motorMode == Player.MotorMode.Seaglide;
             var speed = Mathf.FloorToInt(Player.main.rigidBody.velocity.magnitude);
-            int boostSpeed = 1800;
+            int boostSpeed = 2800;
+            EngineRpmSFXManager __engine = new EngineRpmSFXManager();
             if (usingSeaglide)
             {
                 if (__instance.powerGlideActive)
@@ -24,10 +25,11 @@ namespace BetterSeaglideBZ.Patches
                     if (__instance.HasEnergy())
                     {
                         __instance.powerGlideForce = boostSpeed; // the force that is applied
-                       // __instance..energyMixin.ConsumeEnergy(0.0001f);// For energy Consumption
-                        //__instance._smoothedMoveSpeed = speed; //* 4000; The moving effects
+                       // __instance.energyMixin.ConsumeEnergy(0.0001f);// For energy Consumption
+                       // __instance._smoothedMoveSpeed = speed; //* 4000; The moving effects
                         //__instance.engineRPMManager.engineRpmSFX.evtStop.setPitch(1.3f); //sets the sound pitch
                        // __instance.engineRPMManager.engineRpmSFX.evtStop.setVolume(2.0f);//Change the volume
+                        QModManager.Utility.Logger.Log(QModManager.Utility.Logger.Level.Error, $"[BetterSeaGlideBZ] engineRPMManager:{__engine.engineRpmSFX.evt}", null, true);
                         __instance.animator.speed = speed;// Prop Animation speed
                         MainPatch.pGlide = true;
                     }
@@ -48,7 +50,7 @@ namespace BetterSeaglideBZ.Patches
     }
 
 
-    [HarmonyPatch(typeof(VehicleInterface_EnergyBar))]
+    /*[HarmonyPatch(typeof(VehicleInterface_EnergyBar))]
     [HarmonyPatch("Update")]
     class VehicleInterface_EnergyBarUpdatePatch
     {
@@ -57,9 +59,9 @@ namespace BetterSeaglideBZ.Patches
             if (__instance.enabled)
             {
                 var speed = Mathf.FloorToInt(Player.main.rigidBody.velocity.magnitude);
-                __instance.energyBarMat.color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
-                //__instance.energyBarMat.
-                //__instance.energyBar.transform.localRotation = new Quaternion(Menus.Config.x, Menus.Config.y, Menus.Config.z, Menus.Config.w);
+               // __instance.energyBarMat.color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+               // __instance.energyBarMat.
+               // __instance.energyBar.transform.localRotation = new Quaternion(Menus.Config.x, Menus.Config.y, Menus.Config.z, Menus.Config.w);
                // __instance.energyBar.transform.localPosition = new Vector3(0.0f, Menus.Config.y1, Menus.Config.z1);
                 //ErrorMessage.AddWarning($"{__instance.energyMixin.GetEnergyScalar()}");
                 //test.material.color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
@@ -92,7 +94,7 @@ namespace BetterSeaglideBZ.Patches
             }
             return true;
         }
-    }
+    }*/
     [HarmonyPatch(typeof(Seaglide))]
     [HarmonyPatch("Update")]
     class SeaglideSpeedUpdatePatch
@@ -101,18 +103,19 @@ namespace BetterSeaglideBZ.Patches
         {
             var usingSeaglide = Player.main.motorMode == Player.MotorMode.Seaglide;
             //ErrorMessage.AddWarning($" {Mathf.FloorToInt(Player.main.rigidBody.velocity.magnitude)}");
-            var batteryMeter = __instance.gameObject.GetAllComponentsInChildren<VehicleInterface_EnergyBar>();
+         //   var batteryMeter = __instance.gameObject.GetAllComponentsInChildren<VehicleInterface_EnergyBar>();
             float speed = Mathf.FloorToInt(Player.main.rigidBody.velocity.magnitude);
-            int boostSpeed = 1800;
+            int boostSpeed = 2800;
             if (!usingSeaglide)
             {
                // foreach (var bat in batteryMeter)
                // {
                    // bat.energyBar.SetActive(true);
                   //  bat.gameObject.SetActive(true);
-                  //  __instance.engineRPMManager.engineRpmSFX.evt.setPitch(1);
-                    //__instance._smoothedMoveSpeed = 0;
-                    __instance.powerGlideActive = false;
+                    //__instance.engineRPMManager.engineRpmSFX.evt.setPitch(1);
+                QModManager.Utility.Logger.Log(QModManager.Utility.Logger.Level.Error, $"[BetterSeaGlideBZ] Range:{__instance.engineRPMManager.engineRpmSFX}", null, true);
+                //__instance._smoothedMoveSpeed = 0;
+                __instance.powerGlideActive = false;
                     __instance.animator.speed = 1;
                  //   __instance.engineRPMManager.engineRpmSFX.evt.setVolume(1);
                     MainPatch.pGlide = false;
@@ -164,4 +167,4 @@ namespace BetterSeaglideBZ.Patches
             return true;
         }
     }
-}*/
+}

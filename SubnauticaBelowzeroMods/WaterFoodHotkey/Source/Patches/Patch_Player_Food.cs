@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HarmonyLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -71,20 +72,22 @@ namespace WaterFoodHotkeyBZ.Patches
             IList<InventoryItem> snacks1 = pInventory.container.GetItems(TechType.Snack1);
             IList<InventoryItem> snacks2 = pInventory.container.GetItems(TechType.Snack2);
             IList<InventoryItem> snacks3 = pInventory.container.GetItems(TechType.Snack3);
-            if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == false && !MainPatch.EditNameCheck)
+
+
+            if (Input.GetKeyDown(MainPatch.FoodHotKey) && MainPatch.ToggleFoodHotKey == false && !MainPatch.EditNameCheck)
             {
-                if (Config.TextValue == 0)
+                if (MainPatch.TextValue == "Standard")
                 {
                     ErrorMessage.AddWarning("You have Disabled The Food Hotkey");
                 }
-                else if (Config.TextValue == 1)
+                else if (MainPatch.TextValue == "Fancy")
                 {
                     Subtitles.Add("You Have Disabled The Food Hotkey");
                 }
             }
-            else if (Input.GetKeyDown(Config.FoodHotKey) && Config.ToggleFoodHotKey == true && !MainPatch.EditNameCheck)
+            else if (Input.GetKeyDown(MainPatch.FoodHotKey) && MainPatch.ToggleFoodHotKey == true && !MainPatch.EditNameCheck)
             {
-                if (Player.main.GetComponent<Survival>().food <= Config.FoodPercentage)
+                if (Player.main.GetComponent<Survival>().food <= MainPatch.FoodPercentage)
                 {
                     //Cooked
                     if (cookedBladderFish != null)
@@ -303,11 +306,11 @@ namespace WaterFoodHotkeyBZ.Patches
                     }
                     else
                     {
-                        if (Config.TextValue == 0)
+                        if (MainPatch.TextValue == "Standard")
                         {
                             ErrorMessage.AddWarning("You Do Not Have Any Eatable Items In your Inventory");
                         }
-                        else if (Config.TextValue == 1)
+                        else if (MainPatch.TextValue == "Fancy")
                         {
                             Subtitles.Add("You Do Not Have Any Eatable Items In your Inventory");
                         }
@@ -315,11 +318,11 @@ namespace WaterFoodHotkeyBZ.Patches
                 }
                 else
                 {
-                    if (Config.TextValue == 0)
+                    if (MainPatch.TextValue == "Standard")
                     {
                         ErrorMessage.AddWarning("You Do Not Need Too Eat, You're Not Hungry");
                     }
-                    else if (Config.TextValue == 1)
+                    else if (MainPatch.TextValue == "Fancy")
                     {
                         Subtitles.Add("You Do Not Need Too Eat, You're Not Hungry");
                     }
