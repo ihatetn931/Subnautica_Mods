@@ -16,6 +16,8 @@ namespace BetterSeaglideBZ
     public class SeaglideConfig : ConfigFile
     {
 
+        [Keybind("Boost", Id = "BoostKey"), OnChange(nameof(KeyBindChangeEvent))]
+        public KeyCode BoostKey = KeyCode.LeftShift;
 
         [Toggle("Enable Seaglide Light Options", Id = "LightOptions"), OnChange(nameof(CheckboxToggleEvent))]
         public bool ToggleSeaglideLightOptions = false;
@@ -44,6 +46,16 @@ namespace BetterSeaglideBZ
         public float SeaglideGreen = 1.000f;
         [Slider("Seaglide Blue", 0.001f, 1.000f, DefaultValue = 1.000f, Id = "SeaglideBlue", Step = 0.001f, Format = "{0:F3}"), OnChange(nameof(SliderChangeEvent))]
         public float SeaglideBlue = 1.000f;
+
+        private void KeyBindChangeEvent(KeybindChangedEventArgs e)
+        {
+            switch (e.Id)
+            {
+                case "BoostKey":
+                    MainPatch.BoostKey = e.Key;
+                    break;
+            }
+        }
 
         private void CheckboxToggleEvent(ToggleChangedEventArgs e)
         {

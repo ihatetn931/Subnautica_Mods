@@ -29,6 +29,8 @@ namespace BetterSeaglideBZ
         public static float seagliderValue;
         public static float seaglidegValue;
         public static float seaglidebValue;
+        public static float boostSpeed;
+        public static KeyCode BoostKey;
 
         public static void FirstStart()
         {
@@ -44,6 +46,7 @@ namespace BetterSeaglideBZ
             seagliderValue = SeaglideC.SeaglideRed;
             seaglidegValue = SeaglideC.SeaglideGreen;
             seaglidebValue = SeaglideC.SeaglideBlue;
+            BoostKey = SeaglideC.BoostKey;
             SecondStart();
         }
 
@@ -52,6 +55,7 @@ namespace BetterSeaglideBZ
         {
             Harmony harmony = new Harmony("BetterSeaglideBZ.mod");
             harmony.PatchAll();
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using QModManager.API.ModLoading;
+using System;
 using UnityEngine;
 
 namespace BelowZeroAltMeter
@@ -19,12 +20,17 @@ namespace BelowZeroAltMeter
                 {
                     int altitude = (int)Player.main.transform.position.y;
                     var depth = Mathf.FloorToInt(Player.main.GetDepth());
-                    if (altitude != 0 && depth == 0)
+                    var mainAlt = Math.Sign(altitude);
+                    if (mainAlt == 1 && depth == 0)
                     {
-                        /*Debug.Log($"" +
-                            $"suffixText.text is {__instance.suffixText.text}");*/
-                        __instance.suffixText.text = "m ^";
-                        __instance.depthText.text = altitude.ToString();
+                            __instance.submersibleDepthSuffix.text = "m ^";
+                            __instance.submersibleDepth.text = altitude.ToString();
+                            __instance.suffixText.text = "m ^";
+                            __instance.depthText.text = altitude.ToString();
+                    }
+                    else
+                    {
+                        __instance.submersibleDepthSuffix.text = "m";
                     }
                 }
                 return true;
@@ -32,5 +38,4 @@ namespace BelowZeroAltMeter
         }
     }
 }
-
 
