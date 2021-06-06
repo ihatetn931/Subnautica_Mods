@@ -2,10 +2,13 @@
   "Id": "BelowzeroAltMeter",
   "DisplayName": "BelowZero Alt Meter",
   "Author": "ihatetn931",
-  "Version": "2.0.1",
+  "Version": "2.0.0",
   "Requires": [ "" ],
   "Enable": true,
   "Game": "BelowZero",
+  "VersionChecker": {
+    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/BelowZeroAltMeter/BelowZeroAltMeter/mod.json"
+  },
   "NexusId": {
     "BelowZero": "51"
   },
