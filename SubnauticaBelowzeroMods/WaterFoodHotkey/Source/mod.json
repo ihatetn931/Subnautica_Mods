@@ -9,7 +9,7 @@
     "BelowZero": "32"
   },
   "VersionChecker": {
-    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/BelowZeroAltMeter/BelowZeroAltMeter/mod.json"
+    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/WaterFoodHotkey/Source/mod.json"
   },
   "AssemblyName": "WaterFoodHotkeyBZ.dll",
   "Dependencies": [ "SMLHelper" ],
