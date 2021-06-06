@@ -1,0 +1,16 @@
+﻿{
+  "Id": "BelowzeroAltMeter",
+  "DisplayName": "BelowZero Alt Meter",
+  "Author": "ihatetn931",
+  "Version": "2.0.1",
+  "Requires": [ "" ],
+  "Enable": true,
+  "Game": "BelowZero",
+  "NexusId": {
+    "BelowZero": "51"
+  },
+  "AssemblyName": "BelowZeroAltMeter.dll",
+  "Dependencies": [],
+  "EntryMethod": "BelowZeroAltMeter.MainPatch.FirstStart",
+  "Config": {}
+}

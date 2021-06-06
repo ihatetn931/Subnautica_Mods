@@ -9,19 +9,17 @@ namespace BelowZeroAltMeter
     {
         [HarmonyPatch(typeof(uGUI_DepthCompass))]
         [HarmonyPatch("UpdateDepth")]
-
         internal class uGUI_DepthCompass_UpdateDepth_Patch
         {
             [QModPrePatch]
             public static bool Prefix(uGUI_DepthCompass __instance)
             {
-
                 if (Player.main != null)
                 {
                     int altitude = (int)Player.main.transform.position.y;
                     var depth = Mathf.FloorToInt(Player.main.GetDepth());
                     var mainAlt = Math.Sign(altitude);
-                    if (mainAlt == 1 && depth == 0)
+                    if (mainAlt >= 1 && depth == 0)
                     {
                         if (MainPatch.ToggleSymbol)
                         {
@@ -48,4 +46,3 @@ namespace BelowZeroAltMeter
         }
     }
 }
-

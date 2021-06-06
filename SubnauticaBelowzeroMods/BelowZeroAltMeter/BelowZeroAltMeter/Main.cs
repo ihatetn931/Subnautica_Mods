@@ -11,7 +11,7 @@ namespace BelowZeroAltMeter
         internal static Config HotkeyConfig { get; } = OptionsPanelHandler.Main.RegisterModOptions<Config>();
 
         public static bool ToggleSymbol;
-        
+
         public static void FirstStart()
         {
             ToggleSymbol = HotkeyConfig.ToggleAltSymbol;
