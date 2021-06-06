@@ -1,19 +1,19 @@
 ﻿{
-    "Id": "MapRoomCameraLightsBZ",
-    "DisplayName": "Map Room Camera Lights",
-    "Author": "ihatetn931",
-    "Version": "1.0.0",
-    "Requires": [ "" ],
-    "Enable": true,
-    "Game": "BelowZero",
-	  "NexusId": {
+  "Id": "MapRoomCameraLightsBZ",
+  "DisplayName": "Map Room Camera Lights",
+  "Author": "ihatetn931",
+  "Version": "1.0.0",
+  "Requires": [ "" ],
+  "Enable": true,
+  "Game": "BelowZero",
+  "NexusId": {
     "BelowZero": "51"
   },
   "VersionChecker": {
-    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/BelowZeroAltMeter/BelowZeroAltMeter/mod.json"
+    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/MapRoomCameraLightsBZ/mod.json"
   },
-    "AssemblyName": "MapRoomCameraLights.dll",
-    "Dependencies": ["SMLHelper"],
-    "EntryMethod": "MapRoomCameraLights.MainPatch.FirstStart",
-    "Config": {}
+  "AssemblyName": "MapRoomCameraLightsBZ.dll",
+  "Dependencies": [ "SMLHelper" ],
+  "EntryMethod": "MapRoomCameraLightsBZ.MainPatch.FirstStart",
+  "Config": {}
 }
