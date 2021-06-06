@@ -23,10 +23,20 @@ namespace BelowZeroAltMeter
                     var mainAlt = Math.Sign(altitude);
                     if (mainAlt == 1 && depth == 0)
                     {
+                        if (MainPatch.ToggleSymbol)
+                        {
                             __instance.submersibleDepthSuffix.text = "m ^";
                             __instance.submersibleDepth.text = altitude.ToString();
                             __instance.suffixText.text = "m ^";
                             __instance.depthText.text = altitude.ToString();
+                        }
+                        else
+                        {
+                            __instance.submersibleDepthSuffix.text = "m";
+                            __instance.submersibleDepth.text = altitude.ToString();
+                            __instance.suffixText.text = "m";
+                            __instance.depthText.text = altitude.ToString();
+                        }
                     }
                     else
                     {

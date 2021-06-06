@@ -1,25 +1,25 @@
 ﻿
 using HarmonyLib;
 using QModManager.API.ModLoading;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+using SMLHelper.V2.Handlers;
 
 namespace BelowZeroAltMeter
 {
     [QModCore]
     public class MainPatch
     {
+        internal static Config HotkeyConfig { get; } = OptionsPanelHandler.Main.RegisterModOptions<Config>();
+
+        public static bool ToggleSymbol;
+        
         public static void FirstStart()
         {
-           SecondStart();
+            ToggleSymbol = HotkeyConfig.ToggleAltSymbol;
+            SecondStart();
         }
         [QModPatch]
         public static void SecondStart()
         {
-           // HarmonyInstance.Create("BelowZeroAltMeter.mod").PatchAll(Assembly.GetExecutingAssembly());
             Harmony harmony = new Harmony("BelowZeroAltMeter.mod");
             harmony.PatchAll();
         }
