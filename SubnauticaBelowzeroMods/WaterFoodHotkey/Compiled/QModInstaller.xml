@@ -555,14 +555,15 @@
             <param name="version">The version to check.</param>
             <returns>True if this matches version 0.0.0.0</returns>
         </member>
-        <member name="T:QModInstaller.QModPatcher">
+        <member name="T:QModInstaller.QMMLoader">
             <summary>
-            Container class for the entry point
+            QMMLoader - simply fires up the QModManager entry point.
             </summary>
         </member>
-        <member name="M:QModInstaller.QModPatcher.Patch">
+        <member name="M:QModInstaller.QMMLoader.#ctor">
             <summary>
-            QModManager entry point
+            Prevents a default instance of the <see cref="T:QModInstaller.QMMLoader"/> class from being created 
+            Also ensures the root bepinex object does not get destroyed if the game reloads for steam.
             </summary>
         </member>
     </members>

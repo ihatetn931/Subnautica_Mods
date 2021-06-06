@@ -9,68 +9,50 @@ namespace WaterFoodHotkeyBZ
     [QModCore]
     public static class MainPatch
     {
-        //// public static Configkey keyConfig;
-        //public static TextDisplay textConfig;
-        //public static ToggleKeys toggleConfig;
-        // public static PercentageValues percentageConfig;
         internal static Config HotkeyConfig { get; } = OptionsPanelHandler.Main.RegisterModOptions<Config>();
 
         public static bool EditNameCheck = false;
-        public static KeyCode WaterHotKey;
-        public static KeyCode FoodHotKey;
+
+        public static KeyCode FoodDrinkHotKey;
         public static KeyCode MedHotKey;
+        public static KeyCode HeatHotkey;
 
         public static string TextValue;
 
-        public static bool ToggleWaterHotKey;
-        public static bool ToggleFoodHotKey;
+        public static bool ToggleFoodDrink;
         public static bool ToggleMedHotKey;
+        public static bool ToggleHeatHotKey;
 
-        public static float WaterPercentage;
-        public static float FoodPercentage;
+        public static float FoodDrinkPercentage;
         public static float HealthPercentage;
+        public static float HeatPercentage;
+
         [QModPatch]
         public static void FirstStart()
         {
-            //Build And Load Settings Menu
-            //Config.Load();
-            //HotkeyConfig.Load();
-            WaterHotKey = HotkeyConfig.SetWaterHotkey;
-            FoodHotKey = HotkeyConfig.SetFoodHotkey;
+            FoodDrinkHotKey = HotkeyConfig.SetFoodDrinkHotKey;
             MedHotKey = HotkeyConfig.SetMedHotkey;
+            HeatHotkey = HotkeyConfig.SetHeatHotKey;
 
             TextValue = HotkeyConfig.Text;
 
-            ToggleWaterHotKey = HotkeyConfig.ToggleWater;
-            ToggleFoodHotKey = HotkeyConfig.ToggleFood;
+            ToggleFoodDrink = HotkeyConfig.ToggleFoodDrink;
             ToggleMedHotKey = HotkeyConfig.ToggleHealth;
+            ToggleHeatHotKey = HotkeyConfig.ToggleHeat;
 
-            WaterPercentage = HotkeyConfig.WaterPercent;
-            FoodPercentage = HotkeyConfig.FoodPercent;
+            FoodDrinkPercentage = HotkeyConfig.FoodDrinkPercent;
             HealthPercentage = HotkeyConfig.HealthPercent;
-            //OptionsPanelHandler.RegisterModOptions(new Options());
-#if DEBUG
+            HeatPercentage = HotkeyConfig.HeatPercent;
 
-            Debug.Log($"[WaterFoodHotkey] :: WaterHotKey is '{WaterHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: FoodHotKey is '{FoodHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: MedHotKey is '{MedHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: TextValue is '{TextValue}'");
-            Debug.Log($"[WaterFoodHotkey] :: ToggleWaterHotKey is '{ToggleWaterHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: ToggleFoodHotKey is '{ToggleFoodHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: ToggleMedHotKey is '{ToggleMedHotKey}'");
-            Debug.Log($"[WaterFoodHotkey] :: WaterPercentage is '{WaterPercentage}'");
-            Debug.Log($"[WaterFoodHotkey] :: FoodPercentage is '{FoodPercentage}'");
-            Debug.Log($"[WaterFoodHotkey] :: HealthPercentage is '{HealthPercentage}'");
-#endif
             //Patches
             Harmony harmony = new Harmony("WaterFoodHotkey.mod");
             harmony.PatchAll();
 
             //Player Patch for hotkey
             MethodInfo pInfo = AccessTools.Method(typeof(Player), nameof(Player.Update));
-            harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.PlayerWater_Patch), nameof(Patches.PlayerWater_Patch.Patch_Player_Water)), null);
+            harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.PlayerHeat_Patch), nameof(Patches.PlayerHeat_Patch.Patch_Player_Heat)), null);
             harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.PlayerHealth_Patch), nameof(Patches.PlayerHealth_Patch.Patch_Player_Health)), null);
-            harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.PlayerFood_Patch), nameof(Patches.PlayerFood_Patch.Patch_Player_Food)), null);
+            harmony.Patch(pInfo, null, new HarmonyMethod(typeof(Patches.PlayerFood_Patch), nameof(Patches.PlayerFood_Patch.Patch_Player_Food_Drink)), null);
 
             //Patches for checks to see if player is editing anything that contains typing in game
             MethodInfo Edit_Name_Check_Gui_Input_OnSelect = AccessTools.Method(typeof(uGUI_InputGroup), nameof(uGUI_InputGroup.OnSelect));

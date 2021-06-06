@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Steamworks;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -23,123 +24,134 @@ namespace SubnauticaBZRP
         {
             discord = new Discord.Discord(658097781482848257, (UInt64)Discord.CreateFlags.Default);
             DiscordController.Load();
-            
+           // try
+          //  {
+               //  SteamClient.Init(848450);
+         //   }
+         //   catch(System.Exception e)
+         //   {
+                
+         //       Debug.Log("Exception: " + e.Message);
+         //   }
+
+
         }
     }
 
     public class Utility
     {
-        private static Dictionary<string, string> biomeMap = new Dictionary<string, string>()
-        {
-            {
-                "sparsearctic",
-                "Sparse Arctic"
-            },
-            {
-                "glacialconnection",
-                "Glacial Connection"
-            },
-            {
-                "arctickelp",
-                "Arctic Kelp Forest"
-            },
-            {
-                "arctic",
-                "Arctic"
-            },
-            {
-                "thermalspires",
-                "Thermal Spires"
-            },
-            {
-                "treespires",
-                "Tree Spires"
-            },
-            {
-                "purplevents",
-                "Purple Vents"
-            },
-            {
-                "purplevents_deep",
-                "Purple Vents Deep"
-            },
-            {
-                "crystalcave",
-                "Crystal Caves"
-            },
-            {
-                "fabricatorcaverns",
-                "Fabcricator Caverns"
-            },
-            {
-                "twistybridges_deep",
-                "Twisty Bridges Deep"
-            },
-            {
-                "arctickelp_caveinner",
-                "Arctic Kelp Caves"
-            },
-            {
-                "arcticKelp_caveouter",
-                "Arctic Kelp Caves"
-            },
-            {
-                "startzone",
-                "Starting Zone"
-            },
-            {
-                "introicecave",
-                "Intro Ice Cave"
-            },
-            {
-                "twistybridges_shallow",
-                "Twisty Bridges Shallow"
-            },
-            {
-                "twistybridges",
-                "Twisty Bridges"
-            },
-            {
-                "lilypads",
-                "Lily Pads"
-            },
-            {
-                "lilypads_deep",
-                "Lily Pads Deep"
-            },
-            {
-                "miningsite",
-                "Mining Site"
-            },
-            {
-                "rocketarea",
-                "Rocket Island"
-            },
-            {
-                "arcticspires",
-                "Arctic Spires"
-            },
-            {
-                "glacialbasin",
-                "Glacial Basin"
-            },
-            {
-                "icesheet",
-                "Ice Sheet"
-            },
-            {
-                "glacier",
-                "Glacier"
-            }
-        };
+        public static List<Json.BiomeName> biomeMap = new List<Json.BiomeName>();
+        /* private static Dictionary<string, string> biomeMap = new Dictionary<string, string>();
+         {
+             {
+                 "sparsearctic",
+                 "Sparse Arctic"
+             },
+             {
+                 "glacialconnection",
+                 "Glacial Connection"
+             },
+             {
+                 "arctickelp",
+                 "Arctic Kelp Forest"
+             },
+             {
+                 "arctic",
+                 "Arctic"
+             },
+             {
+                 "thermalspires",
+                 "Thermal Spires"
+             },
+             {
+                 "treespires",
+                 "Tree Spires"
+             },
+             {
+                 "purplevents",
+                 "Purple Vents"
+             },
+             {
+                 "purplevents_deep",
+                 "Purple Vents Deep"
+             },
+             {
+                 "crystalcave",
+                 "Crystal Caves"
+             },
+             {
+                 "fabricatorcaverns",
+                 "Fabcricator Caverns"
+             },
+             {
+                 "twistybridges_deep",
+                 "Twisty Bridges Deep"
+             },
+             {
+                 "arctickelp_caveinner",
+                 "Arctic Kelp Caves"
+             },
+             {
+                 "arcticKelp_caveouter",
+                 "Arctic Kelp Caves"
+             },
+             {
+                 "startzone",
+                 "Starting Zone"
+             },
+             {
+                 "introicecave",
+                 "Intro Ice Cave"
+             },
+             {
+                 "twistybridges_shallow",
+                 "Twisty Bridges Shallow"
+             },
+             {
+                 "twistybridges",
+                 "Twisty Bridges"
+             },
+             {
+                 "lilypads",
+                 "Lily Pads"
+             },
+             {
+                 "lilypads_deep",
+                 "Lily Pads Deep"
+             },
+             {
+                 "miningsite",
+                 "Mining Site"
+             },
+             {
+                 "rocketarea",
+                 "Rocket Island"
+             },
+             {
+                 "arcticspires",
+                 "Arctic Spires"
+             },
+             {
+                 "glacialbasin",
+                 "Glacial Basin"
+             },
+             {
+                 "icesheet",
+                 "Ice Sheet"
+             },
+             {
+                 "glacier",
+                 "Glacier"
+             }
+         };*/
 
         public static string GetBiomeDisplayName(string biomeStr)
         {
             foreach (var biome in biomeMap)
             {
-                if (biomeStr.ToLower().Equals(biome.Key))//Contains(biome.Key))
+                if (biomeStr.Equals(biome.Biomename))//Contains(biome.Key))
                 {
-                    return biome.Value;
+                    return biome.BiomeEditedName;
                 }
             }
 
@@ -150,13 +162,14 @@ namespace SubnauticaBZRP
         {
             foreach (var biome in biomeMap)
             {
-                if (biomeDisplayName.Equals(biome.Value))
+                if (biomeDisplayName.Equals(biome.BiomeEditedName))
                 {
-                    return biome.Key;
+                   // Debug.Log("BiomeName: " + biome.Biomename);
+                    return biome.Biomename;
                 }
             }
 
-            return "";
+            return biomeDisplayName;
         }
     }
 }

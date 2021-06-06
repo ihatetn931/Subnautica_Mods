@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using Oculus.Newtonsoft.Json;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace SubnauticaBZRP
         {
             public int BiomeId { get; set; }
             public string Biomename { get; set; }
+            public string BiomeEditedName { get; set; }
             public string TimeDateFound { get; set; }
         }
         public class RootObject
@@ -40,7 +42,7 @@ namespace SubnauticaBZRP
             var settings = new JsonSerializerSettings { CheckAdditionalContent = true, Formatting = Formatting.Indented };
             var read = File.ReadAllText(ConfigFile.lightStatePath);
             var json = JsonConvert.DeserializeObject<RootObject>(read);
-
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             json.totalBiomes = json.biomenames.Count + 1;
 
             foreach (var c in json.biomenames)
@@ -58,6 +60,7 @@ namespace SubnauticaBZRP
                 {
                     BiomeId = json.totalBiomes,
                     Biomename = name.ToLower(),
+                    BiomeEditedName = textInfo.ToTitleCase(name.Replace("_", " ")),
                     TimeDateFound = DateTime.Now.ToString(),
                 });
 

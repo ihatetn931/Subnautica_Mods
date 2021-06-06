@@ -9,6 +9,7 @@ using System.Web;
 using System.Collections;
 //using Oculus.Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Globalization;
 //using Oculus.Newtonsoft.Json.Linq;
 
 namespace SubnauticaBZRP
@@ -31,7 +32,7 @@ namespace SubnauticaBZRP
         private static string currentSceneName;
         private static bool dBug = false;
         public static bool FileCreated = false;
-
+        TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
         public static void Load()
         {
             controllerGO = new GameObject("DiscordController");
@@ -58,13 +59,14 @@ namespace SubnauticaBZRP
             Main.discord.RunCallbacks();
             UpdateState();
             UpdateAll();
+           // Steamworks.SteamFriends.SetRichPresence("status", "test");
         }
 
         private void UpdateState()
         {
             if (currentSceneName.ToLower().Contains("menu"))
                 state = PlayerState.Menu;
-            else if (!uGUI_SceneLoading.IsLoadingScreenFinished || uGUI.main.loading.IsLoading || !uGUI.main)
+            else if (uGUI.main.loading.IsLoading || !uGUI.main)
                 state = PlayerState.Loading;
             else
                 state = PlayerState.Playing;
@@ -85,6 +87,7 @@ namespace SubnauticaBZRP
                 },
 
             };
+
 
             activityManager.UpdateActivity(main, (res) =>
             {
@@ -109,8 +112,11 @@ namespace SubnauticaBZRP
 
             var biome = Utility.GetBiomeDisplayName(Player.main.GetBiomeString().ToLower());
             var stringName = Utility.GetBiomeStringName(biome);
-            pDetails = "At " + biome;
-            lImage = stringName;
+          //  Debug.Log("Biome: " + biome);
+          //  Debug.Log("stringName: " + stringName);
+          //  Debug.Log("BiomeString: " + Player.main.GetBiomeString());
+            pDetails = "At " + textInfo.ToTitleCase(biome.Replace("_", " "));
+            lImage = biome;
 
 
             if (Player.main.GetBiomeString() != null)
