@@ -1,0 +1,19 @@
+﻿{
+  "Id": "BetterFlashLight",
+  "DisplayName": "Better FlashLight",
+  "Author": "ihatetn931",
+  "Version": "1.0.1a",
+  "Requires": [ "" ],
+  "Enable": true,
+  "Game": "BelowZero",
+  "NexusId": {
+    "BelowZero": "36"
+  },
+  "VersionChecker": {
+    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/BelowZeroAltMeter/BelowZeroAltMeter/mod.json"
+  },
+  "AssemblyName": "BetterFlashLightBZ.dll",
+  "Dependencies": [],
+  "EntryMethod": "BetterFlashLightBZ.MainPatch.FirstStart",
+  "Config": {}
+}

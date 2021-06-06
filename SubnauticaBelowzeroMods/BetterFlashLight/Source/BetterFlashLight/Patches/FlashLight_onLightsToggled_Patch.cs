@@ -74,31 +74,7 @@ namespace BetterFlashLightBZ.Patches
                         break;
                     }
                 }
-
             }
-/*            else
-            {
-                var flashLight = __instance.toggleLights.lightsParent.GetComponentsInChildren<Light>();
-                if (flashLight != null)
-                {
-                    foreach (var allLights in flashLight)
-                    {
-                        if (allLights.gameObject.name.Contains("x_flashlightCone"))
-                        {
-                            allLights.color = FlashLightConfig.FlashLightColor.ToColor(false);
-                            allLights.intensity = 1.000f;
-                            allLights.range = 50.000f;
-                        }
-                        else
-                        {
-                            allLights.color = FlashLightConfig.FlashLightColor.ToColor(false);
-                            allLights.intensity = 1.000f;
-                            allLights.range = 50.000f;
-                        }
-                        break;
-                    }
-                }
-            }*/
             return true;
         }
     }

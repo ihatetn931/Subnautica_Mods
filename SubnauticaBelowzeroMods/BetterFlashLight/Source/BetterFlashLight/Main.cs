@@ -20,9 +20,6 @@ namespace BetterFlashLightBZ
         public static bool ToggleOptions;
         public static void FirstStart()
         {
-            // ConfigMenu.Load();
-
-            //OptionsPanelHandler.RegisterModOptions(new Options());
             rValue = SeaglideC.SeaglideLightRed;
             gValue = SeaglideC.SeaglideLightGreen;
             bValue = SeaglideC.SeaglideLightBlue;
@@ -35,7 +32,6 @@ namespace BetterFlashLightBZ
         [QModPatch]
         public static void SecondStart()
         {
-            // HarmonyInstance.Create("BetterFlashLightBZ.mod").PatchAll(Assembly.GetExecutingAssembly());
             Harmony harmony = new Harmony("BetterFlashLightBZ.mod");
             harmony.PatchAll();
         }

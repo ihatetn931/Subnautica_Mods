@@ -4,10 +4,8 @@ using UnityEngine;
 
 namespace BetterSeaglideBZ.Patches
 {
-
     [HarmonyPatch(typeof(Seaglide))]
     [HarmonyPatch("FixedUpdate")]
-
     class SeaglideSpeedFixedUpdatePatch
     {
         [QModPrePatch]
