@@ -2,7 +2,7 @@
   "Id": "WaterFoodHotkey",
   "DisplayName": "WaterFoodHotkeyBZ",
   "Author": "ihatetn931",
-  "Version": "1.0.2",
+  "Version": "1.0.5",
   "Enable": true,
   "Game": "BelowZero",
   "AssemblyName": "WaterFoodHotkeyBZ.dll",
