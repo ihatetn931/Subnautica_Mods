@@ -5,9 +5,15 @@
   "Version": "1.0.5",
   "Enable": true,
   "Game": "BelowZero",
+  "NexusId": {
+    "BelowZero": "32"
+  },
+  "VersionChecker": {
+    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/BelowZeroAltMeter/BelowZeroAltMeter/mod.json"
+  },
   "AssemblyName": "WaterFoodHotkeyBZ.dll",
-  "Dependencies": ["SMLHelper"],
-  "LoadAfter": ["SMLHelper"],
+  "Dependencies": [ "SMLHelper" ],
+  "LoadAfter": [ "SMLHelper" ],
   "EntryMethod": "WaterFoodHotkeyBZ.MainPatch.FirstStart",
   "Config": {}
 }
