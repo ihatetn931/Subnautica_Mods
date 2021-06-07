@@ -21,13 +21,10 @@ namespace MapRoomCameraLightsBZ
             Intensity = CamLights.MapIntensity;
             Range = CamLights.MapRange;
             spotAngle = CamLights.MapspotAngle;
-           // Config.Load();
-          //  OptionsPanelHandler.RegisterModOptions(new Options());
             SecondStart();
         }
         public static void SecondStart()
         {
-            //HarmonyInstance.Create("MapRoomCameraLights.mod").PatchAll(Assembly.GetExecutingAssembly());
             Harmony harmony = new Harmony("MapRoomCameraLightsBZ.mod");
             harmony.PatchAll();
         }
