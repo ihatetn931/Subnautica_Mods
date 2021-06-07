@@ -69,7 +69,6 @@ namespace SubnauticaBZRP
             }
         }
 
-
         public static void AddNewBiome(string bName)
         {
             if (!File.Exists(ConfigFile.lightStatePath))
@@ -81,7 +80,6 @@ namespace SubnauticaBZRP
             {
                 AddToList(bName);
             }
-
         }
     }
 }
