@@ -59,7 +59,6 @@ namespace SubnauticaBZRP
             Main.discord.RunCallbacks();
             UpdateState();
             UpdateAll();
-           // Steamworks.SteamFriends.SetRichPresence("status", "test");
         }
 
         private void UpdateState()
@@ -83,11 +82,9 @@ namespace SubnauticaBZRP
                 {
                     LargeImage = lImage,
                     SmallImage = sImage
-
                 },
 
             };
-
 
             activityManager.UpdateActivity(main, (res) =>
             {
@@ -99,7 +96,6 @@ namespace SubnauticaBZRP
         }
         void All()
         {
-
             if (state != PlayerState.Playing)
             {
                 pDetails = (state == PlayerState.Menu) ? "In Menu" : "Loading";
@@ -118,10 +114,8 @@ namespace SubnauticaBZRP
             pDetails = "At " + textInfo.ToTitleCase(biome.Replace("_", " "));
             lImage = biome;
 
-
             if (Player.main.GetBiomeString() != null)
             {
-                //TestClass.Save(Player.main.GetBiomeString());
                 Json.AddNewBiome(Player.main.GetBiomeString());
             }
             else if (dBug)
@@ -160,7 +154,7 @@ namespace SubnauticaBZRP
             else if (snowfox)
             {
                 var type = snowfox.GetType().Equals(typeof(Hoverbike)) ? "SnowFox" : "SnowFox";
-                pState = "Driving " + type;
+                pState = "Piloting " + type;
                 sImage = type.ToLower();
             }
             else if (seaglide)
