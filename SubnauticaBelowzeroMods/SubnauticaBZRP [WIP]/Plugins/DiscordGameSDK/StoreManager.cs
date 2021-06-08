@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Discord
+namespace DiscordControl
 {
     public partial class StoreManager
     {

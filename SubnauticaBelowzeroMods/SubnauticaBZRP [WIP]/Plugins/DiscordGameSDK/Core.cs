@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Discord
+namespace DiscordControl
 {
     public enum Result
     {
@@ -52,7 +52,7 @@ namespace Discord
         TransactionAborted = 43,
     }
 
-    public enum CreateFlags
+    public enum CreateFlag
     {
         Default = 0,
         NoRequireDiscord = 1,

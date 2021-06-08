@@ -1,16 +1,7 @@
 ﻿using System;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Web;
-using System.Collections;
-//using Oculus.Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Globalization;
-//using Oculus.Newtonsoft.Json.Linq;
 
 namespace SubnauticaBZRP
 {
@@ -23,96 +14,106 @@ namespace SubnauticaBZRP
 
     public class DiscordController : MonoBehaviour
     {
-        private static GameObject controllerGO;
+        private static GameObject discordGameObject;
         public static PlayerState state;
-        private static string lImage;
+        private static string largeImage;
         private static string pState;
         private static string pDetails;
-        private static string sImage;
+        private static string smallImage;
         private static string currentSceneName;
         private static bool dBug = false;
-        public static bool FileCreated = false;
+
         TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+
         public static void Load()
         {
-            controllerGO = new GameObject("DiscordController");
-            controllerGO.AddComponent<DiscordController>();
-            controllerGO.AddComponent<SceneCleanerPreserve>();
-            DontDestroyOnLoad(controllerGO);
+            discordGameObject = new GameObject("DiscordController");
+            discordGameObject.AddComponent<DiscordController>();
+            discordGameObject.AddComponent<SceneCleanerPreserve>();
+            DontDestroyOnLoad(discordGameObject);
             SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         }
 
-        private static void SceneManager_sceneLoaded(Scene scene, LoadSceneMode arg1)
+        private static void SceneManager_sceneLoaded(Scene scene, LoadSceneMode scenemode)
         {
-            currentSceneName = scene.name;
-            Console.WriteLine("Loaded Scene: " + currentSceneName);
-            if (currentSceneName.ToLower().Contains("menu"))
-                state = PlayerState.Menu;
-            if (controllerGO == null)
+            if (scene.name != null)
             {
-                controllerGO = new GameObject("DiscordController").AddComponent<DiscordController>().gameObject;
+                currentSceneName = scene.name;
+                Console.WriteLine("Loaded Scene: " + currentSceneName);
+                if (currentSceneName.ToLower().Contains("menu"))
+                    state = PlayerState.Menu;
+                if (discordGameObject == null)
+                {
+                    discordGameObject = new GameObject("DiscordController").AddComponent<DiscordController>().gameObject;
+                }
             }
         }
 
         private void Update()
         {
             Main.discord.RunCallbacks();
+            Steamworks.SteamClient.RunFrame();
             UpdateState();
             UpdateAll();
         }
 
         private void UpdateState()
         {
-            if (currentSceneName.ToLower().Contains("menu"))
-                state = PlayerState.Menu;
-            else if (uGUI.main.loading.IsLoading || !uGUI.main)
-                state = PlayerState.Loading;
-            else
-                state = PlayerState.Playing;
+            if (currentSceneName != null)
+            {
+                if (currentSceneName.ToLower().Contains("menu"))
+                    state = PlayerState.Menu;
+                else if (uGUI.main.loading.IsLoading || !uGUI.main)
+                    state = PlayerState.Loading;
+                else
+                    state = PlayerState.Playing;
+            }
+
         }
 
         private void UpdateAll()
         {
             var activityManager = Main.discord.GetActivityManager();
-            var main = new Discord.Activity
+            var main = new DiscordControl.Activity
             {
                 Details = pDetails,
                 State = pState,
                 Assets =
                 {
-                    LargeImage = lImage,
-                    SmallImage = sImage
+                    LargeImage = largeImage,
+                    SmallImage = smallImage
                 },
-
             };
 
             activityManager.UpdateActivity(main, (res) =>
             {
-                if (res == Discord.Result.Ok)
+                if (res == DiscordControl.Result.Ok)
                 {
                     All();
                 }
             });
         }
+
         void All()
         {
+
             if (state != PlayerState.Playing)
             {
                 pDetails = (state == PlayerState.Menu) ? "In Menu" : "Loading";
-                lImage = "main";
-                sImage = "";
+                largeImage = "main";
+                smallImage = "";
                 pState = "";
                 return;
             }
-            lImage = "";
 
-            var biome = Utility.GetBiomeDisplayName(Player.main.GetBiomeString().ToLower());
-            var stringName = Utility.GetBiomeStringName(biome);
-          //  Debug.Log("Biome: " + biome);
-          //  Debug.Log("stringName: " + stringName);
-          //  Debug.Log("BiomeString: " + Player.main.GetBiomeString());
+            largeImage = "";
+
+            var biome = BiomeList.GetBiomeDisplayName(Player.main.GetBiomeString().ToLower());
+            var stringName = BiomeList.GetBiomeStringName(biome);
+
             pDetails = "At " + textInfo.ToTitleCase(biome.Replace("_", " "));
-            lImage = biome;
+
+            largeImage = biome;
 
             if (Player.main.GetBiomeString() != null)
             {
@@ -137,43 +138,42 @@ namespace SubnauticaBZRP
             {
                 var type = subRoot.GetType().Equals(typeof(BaseRoot)) ? "Base" : "Base";
                 pState = "In " + type;
-                sImage = "";
+                smallImage = "";
             }
             else if (exoSuit)
             {
-                var type = exoSuit.GetType().Equals(typeof(Exosuit)) ? "Prawn" : "Prawn";
+                var type = exoSuit.GetType().Equals(typeof(Exosuit)) ? "Prawn Suit" : "Prawn Suit";
                 pState = "Piloting " + type;
-                sImage = type.ToLower();
+                smallImage = type.ToLower();
             }
             else if (seatruck)
             {
-                var type = seatruck.GetType().Equals(typeof(SeaTruckMotor)) ? "SeaTruck" : "SeaTruck";
+                var type = seatruck.GetType().Equals(typeof(SeaTruckMotor)) ? "Seatruck" : "Seatruck";
                 pState = "Piloting " + type;
-                sImage = type.ToLower();
+                smallImage = type.ToLower();
             }
             else if (snowfox)
             {
-                var type = snowfox.GetType().Equals(typeof(Hoverbike)) ? "SnowFox" : "SnowFox";
+                var type = snowfox.GetType().Equals(typeof(Hoverbike)) ? "Snowfox" : "Snowfox";
                 pState = "Piloting " + type;
-                sImage = type.ToLower();
+                smallImage = type.ToLower();
             }
             else if (seaglide)
             {
                 var type = seaglide.GetType().Equals(typeof(Seaglide)) ? "Seaglide" : "Seaglide";
                 pState = "Piloting " + type;
-                sImage = type.ToLower();
+                smallImage = type.ToLower();
             }
             else if (Player.main.IsUnderwaterForSwimming())
             {
                 pState = "Swimming";
-                sImage = "fins";
+                smallImage = "fins";
             }
             else if (!Player.main.IsSwimming())
             {
                 pState = "On Foot ";
-                sImage = "";
+                smallImage = "";
             }
-
             if (pState != "")
             {
                 if (depth != 0)

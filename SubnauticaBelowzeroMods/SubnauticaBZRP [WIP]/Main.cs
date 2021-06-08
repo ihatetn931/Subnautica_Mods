@@ -1,14 +1,11 @@
-﻿using Steamworks;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
-
+using HarmonyLib;
 namespace SubnauticaBZRP
 {
     public class Main
     {
-        public static Discord.Discord discord;
+        public static DiscordControl.Discord discord;
 
         public static void FirstStart()
         {
@@ -17,12 +14,12 @@ namespace SubnauticaBZRP
 
         public static void SecondStart()
         {
-            discord = new Discord.Discord(658097781482848257, (UInt64)Discord.CreateFlags.Default);
+            discord = new DiscordControl.Discord(658097781482848257, (UInt64)DiscordControl.CreateFlag.Default);
             DiscordController.Load();
         }
     }
 
-    public class Utility
+    public class BiomeList
     {
         public static List<Json.BiomeName> biomeMap = new List<Json.BiomeName>();
       

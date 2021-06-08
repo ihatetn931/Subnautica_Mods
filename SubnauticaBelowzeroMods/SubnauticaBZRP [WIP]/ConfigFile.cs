@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace SubnauticaBZRP
 {
-    public static class ConfigFile
+    public static class BiomeCapture
     {
         private static readonly string LightsState = "biomes.json";
         public static string lightStatePath = Path.Combine(GetAssemblyDirectory, LightsState);

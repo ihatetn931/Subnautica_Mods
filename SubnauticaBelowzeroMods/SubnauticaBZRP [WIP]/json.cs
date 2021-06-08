@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using Oculus.Newtonsoft.Json;
 using UnityEngine;
-
+//Capture all the biomes the user has been in and make
 namespace SubnauticaBZRP
 {
     public class Json
@@ -33,14 +33,14 @@ namespace SubnauticaBZRP
             var root = new RootObject { biomenames = BiomeNames };
 
             string json = JsonConvert.SerializeObject(root, settings);
-            File.AppendAllText(ConfigFile.lightStatePath, json);
+            File.AppendAllText(BiomeCapture.lightStatePath, json);
         }
 
         public static void AddToList(string name)
         {
             bool found = true;
             var settings = new JsonSerializerSettings { CheckAdditionalContent = true, Formatting = Formatting.Indented };
-            var read = File.ReadAllText(ConfigFile.lightStatePath);
+            var read = File.ReadAllText(BiomeCapture.lightStatePath);
             var json = JsonConvert.DeserializeObject<RootObject>(read);
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             json.totalBiomes = json.biomenames.Count + 1;
@@ -65,13 +65,13 @@ namespace SubnauticaBZRP
                 });
 
                 string jsonString1 = JsonConvert.SerializeObject(json, settings);
-                File.WriteAllText(ConfigFile.lightStatePath, jsonString1);
+                File.WriteAllText(BiomeCapture.lightStatePath, jsonString1);
             }
         }
 
         public static void AddNewBiome(string bName)
         {
-            if (!File.Exists(ConfigFile.lightStatePath))
+            if (!File.Exists(BiomeCapture.lightStatePath))
             {
                 CreateJson();
                 return;
