@@ -86,5 +86,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialColor.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="mod.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
