@@ -6,12 +6,12 @@
     "Requires": [ "" ],
     "Enable": true,
     "Game": "BelowZero",
-	"NexusId": {
+	  "NexusId": {
     "BelowZero": "45"
-	},
-	"VersionChecker": {
-        "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/BelowZeroAltMeter/BelowZeroAltMeter/mod.json"
-	},
+	  },
+    "VersionChecker": {
+    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/BetterSeaglide/BetterSeaglide/mod.json"
+    },
     "AssemblyName": "BetterSeaglideBZ.dll",
     "Dependencies": [],
     "EntryMethod": "BetterSeaglideBZ.MainPatch.FirstStart",
