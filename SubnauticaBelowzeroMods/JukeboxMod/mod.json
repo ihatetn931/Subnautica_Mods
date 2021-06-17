@@ -6,13 +6,13 @@
   "Requires": [ "" ],
   "Enable": true,
   "Game": "BelowZero",
-  // "NexusId": {
-  //   "BelowZero": "51"
-  // },
-  "VersionChecker": {
-    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/BelowZeroAltMeter/BelowZeroAltMeter/mod.json"
+  "NexusId": {
+    "BelowZero": "206"
   },
-  "AssemblyName": "JukeboxColor.dll",
+  "VersionChecker": {
+    "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/JukeboxMod/mod.json"
+  },
+  "mblyName\": \"JukeboxColor.dll\",": null,
   "Dependencies": [],
   "EntryMethod": "JukeBoxMod.MainPatch.FirstStart",
   "Config": {}

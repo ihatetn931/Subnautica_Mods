@@ -98,7 +98,6 @@ namespace JukeBoxMod.Patches
 
 			var subRoot = __instance._baseComp;
 			light = subRoot.GetCellLightingFor(__instance.transform.position);
-			ErrorMessage.AddDebug("LL: " + light.name);
 			var color0 = new Color(__instance.flashColor0.r, __instance.flashColor0.g, __instance.flashColor0.b, 1);
 			var color1 = new Color(__instance.flashColor1.r, __instance.flashColor1.g, __instance.flashColor1.b, 1);
 			var color2 = new Color(JukeboxConfig.FlashColor0.r, JukeboxConfig.FlashColor0.g, JukeboxConfig.FlashColor0.b, 1);
@@ -130,7 +129,8 @@ namespace JukeBoxMod.Patches
 								&& !Mat.name.Contains("WaterPlaneBaseRoomObs")
 								&& !Mat.name.Contains("x_BaseWaterFog_BaseRoom")
 								&& !Mat.name.Contains("x_BaseWaterFog_RoomCorridorConnector")
-								&& !Mat.name.Contains("Juke"))
+								&& !Mat.name.Contains("Juke")
+								&& !Mat.name.Contains("water"))
 							{
 								/*if (!File.Exists(file))
 									File.Create(file);
@@ -153,7 +153,8 @@ namespace JukeBoxMod.Patches
 								&& !Mat.name.Contains("WaterPlaneBaseRoomObs")
 								&& !Mat.name.Contains("x_BaseWaterFog_BaseRoom")
 								&& !Mat.name.Contains("x_BaseWaterFog_RoomCorridorConnector")
-								&& !Mat.name.Contains("Juke"))
+								&& !Mat.name.Contains("Juke")
+								&& !Mat.name.Contains("water"))
 							{
 								Mat.color = Color.white;
 								light.currentIntensity = 1;
@@ -169,7 +170,8 @@ namespace JukeBoxMod.Patches
 								&& !Mat.name.Contains("WaterPlaneBaseRoomObs")
 								&& !Mat.name.Contains("x_BaseWaterFog_BaseRoom")
 								&& !Mat.name.Contains("x_BaseWaterFog_RoomCorridorConnector")
-								&& !Mat.name.Contains("Juke"))
+								&& !Mat.name.Contains("Juke")
+								&& !Mat.name.Contains("water"))
 							{
 								Mat.color = Color.white;
 								light.currentIntensity = 1;
@@ -189,7 +191,9 @@ namespace JukeBoxMod.Patches
 					&& !Mat.name.Contains("x_BaseWaterFog_BaseRoom")
 					&& !Mat.name.Contains("x_BaseWaterFog_RoomCorridorConnector")
 					&& !Mat.name.Contains("Juke")
+					&& !Mat.name.Contains("water")
 					&& !JukeboxConfig.PartyMode)
+
 				{
 					Mat.color = Color.white;
 					light.currentIntensity = 1;

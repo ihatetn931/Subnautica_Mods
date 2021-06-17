@@ -17,7 +17,6 @@ namespace JukeBoxMod.Patches
 			if (__instance.isControlling && Jukebox.isStartingOrPlaying)
 			{
 				MainPatch.isPaused = !Jukebox.paused;
-				ErrorMessage.AddDebug("Paused: " + Jukebox.paused);
 				Jukebox.paused = !Jukebox.paused;
 			}
 			else if (__instance.ConsumePower())
