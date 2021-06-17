@@ -20,7 +20,7 @@ namespace SubnauticaBZRP
             }
         }
 
-        public static void Save(string valueToWrite)
+        /*public static void Save(string valueToWrite)
         {
             bool found = false;
             var lines = File.ReadAllLines(lightStatePath);
@@ -37,7 +37,7 @@ namespace SubnauticaBZRP
                 string textFile = $"{valueToWrite.ToLower()}\n";
                 File.AppendAllText(lightStatePath, textFile);
             }
-        }
+        }*/
     }
 }
 

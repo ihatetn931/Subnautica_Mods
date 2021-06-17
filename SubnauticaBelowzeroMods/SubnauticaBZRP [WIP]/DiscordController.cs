@@ -2,6 +2,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Globalization;
+using CUE.NET;
+using CUE.NET.Devices.Generic.Enums;
+using CUE.NET.Devices.Keyboard;
+using CUE.NET.Devices.Keyboard.Enums;
+using CUE.NET.Devices.Mouse;
+using CUE.NET.Devices.Mouse.Enums;
+using CUE.NET.Devices.Generic;
+using CUE.NET.Brushes;
 
 namespace SubnauticaBZRP
 {
@@ -52,9 +60,9 @@ namespace SubnauticaBZRP
         private void Update()
         {
             Main.discord.RunCallbacks();
-            Steamworks.SteamClient.RunFrame();
             UpdateState();
             UpdateAll();
+           // CueSDK.UpdateMode = UpdateMode.Continuous;
         }
 
         private void UpdateState()
@@ -68,7 +76,6 @@ namespace SubnauticaBZRP
                 else
                     state = PlayerState.Playing;
             }
-
         }
 
         private void UpdateAll()
@@ -96,7 +103,6 @@ namespace SubnauticaBZRP
 
         void All()
         {
-
             if (state != PlayerState.Playing)
             {
                 pDetails = (state == PlayerState.Menu) ? "In Menu" : "Loading";
@@ -111,7 +117,7 @@ namespace SubnauticaBZRP
             var biome = BiomeList.GetBiomeDisplayName(Player.main.GetBiomeString().ToLower());
             var stringName = BiomeList.GetBiomeStringName(biome);
 
-            pDetails = "At " + textInfo.ToTitleCase(biome.Replace("_", " "));
+            pDetails = "Exploring " + textInfo.ToTitleCase(biome.Replace("_", " "));
 
             largeImage = biome;
 
@@ -151,6 +157,7 @@ namespace SubnauticaBZRP
                 var type = seatruck.GetType().Equals(typeof(SeaTruckMotor)) ? "Seatruck" : "Seatruck";
                 pState = "Piloting " + type;
                 smallImage = type.ToLower();
+
             }
             else if (snowfox)
             {

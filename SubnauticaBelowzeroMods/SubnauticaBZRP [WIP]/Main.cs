@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using HarmonyLib;
+using CUE.NET;
+using CUE.NET.Devices.Generic.Enums;
+using CUE.NET.Devices.Keyboard;
+using CUE.NET.Exceptions;
+using UnityEngine;
+
 namespace SubnauticaBZRP
 {
     public class Main

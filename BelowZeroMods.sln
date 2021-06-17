@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelowZeroAltMeter", "Subnau
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapRoomCameraLightsBZ", "SubnauticaBelowzeroMods\MapRoomCameraLightsBZ\MapRoomCameraLightsBZ.csproj", "{C7B2EF38-C398-414B-977D-E7E8C93F36C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JukeboxMod", "SubnauticaBelowzeroMods\JukeboxMod\JukeboxMod.csproj", "{00EE6C00-B34A-40D2-B9EC-1A575FB4ECA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{C7B2EF38-C398-414B-977D-E7E8C93F36C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7B2EF38-C398-414B-977D-E7E8C93F36C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7B2EF38-C398-414B-977D-E7E8C93F36C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00EE6C00-B34A-40D2-B9EC-1A575FB4ECA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00EE6C00-B34A-40D2-B9EC-1A575FB4ECA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00EE6C00-B34A-40D2-B9EC-1A575FB4ECA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EE6C00-B34A-40D2-B9EC-1A575FB4ECA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
