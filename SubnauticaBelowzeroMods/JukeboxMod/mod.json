@@ -1,6 +1,6 @@
 ﻿{
-  "Id": "JukeBoxColor",
-  "DisplayName": "JukeBox Flash Color Changer",
+  "Id": "JukeBoxMod",
+  "DisplayName": "JukeBoxMod",
   "Author": "ihatetn931",
   "Version": "1.0.0",
   "Requires": [ "" ],
@@ -12,7 +12,7 @@
   "VersionChecker": {
     "LatestVersionURL": "https://raw.githubusercontent.com/ihatetn931/Subnautica_Mods/master/SubnauticaBelowzeroMods/JukeboxMod/mod.json"
   },
-  "mblyName\": \"JukeboxColor.dll\",": null,
+  "AssemblyName": "JukeboxMod.dll",
   "Dependencies": [],
   "EntryMethod": "JukeBoxMod.MainPatch.FirstStart",
   "Config": {}
