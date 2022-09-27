@@ -7,8 +7,7 @@ namespace BelowZeroAltMeter
 {
     class AltMeter
     {
-        [HarmonyPatch(typeof(uGUI_DepthCompass))]
-        [HarmonyPatch("UpdateDepth")]
+        [HarmonyPatch(typeof(uGUI_DepthCompass), nameof(uGUI_DepthCompass.UpdateDepth))]
         internal class uGUI_DepthCompass_UpdateDepth_Patch
         {
             [QModPrePatch]
@@ -21,6 +20,18 @@ namespace BelowZeroAltMeter
                     var mainAlt = Math.Sign(altitude);
                     if (mainAlt >= 1 && depth == 0)
                     {
+                        if (MainPatch.ToggleAltTextColor)
+                        {
+                            __instance.submersibleDepthSuffix.color = new Color(MainPatch.AltColorRed, MainPatch.AltColorGreen, MainPatch.AltColorBlue, 1);
+                            __instance.suffixText.color = new Color(MainPatch.AltColorRed, MainPatch.AltColorGreen, MainPatch.AltColorBlue, 1);
+                            __instance.depthText.color = new Color(MainPatch.AltColorRed, MainPatch.AltColorGreen, MainPatch.AltColorBlue, 1);
+                        }
+                        else
+                        {
+                            __instance.submersibleDepthSuffix.color = new Color(255, 255, 255, 1);
+                            __instance.suffixText.color = new Color(255, 255, 255, 1);
+                            __instance.depthText.color = new Color(255, 255, 255, 1);
+                        }
                         if (MainPatch.ToggleSymbol)
                         {
                             __instance.submersibleDepthSuffix.text = "m ^";
@@ -39,6 +50,18 @@ namespace BelowZeroAltMeter
                     else
                     {
                         __instance.submersibleDepthSuffix.text = "m";
+                        if (MainPatch.ToggleDepthTextColor)
+                        {
+                            __instance.submersibleDepthSuffix.color = new Color(MainPatch.DepthTextColorRed, MainPatch.DepthTextColorGreen, MainPatch.DepthTextColorBlue, 1);
+                            __instance.suffixText.color = new Color(MainPatch.DepthTextColorRed, MainPatch.DepthTextColorGreen, MainPatch.DepthTextColorBlue, 1);
+                            __instance.depthText.color = new Color(MainPatch.DepthTextColorRed, MainPatch.DepthTextColorGreen, MainPatch.DepthTextColorBlue, 1);
+                        }
+                        else
+                        {
+                            __instance.submersibleDepthSuffix.color = new Color(255, 255, 255, 1);
+                            __instance.suffixText.color = new Color(255, 255, 255, 1);
+                            __instance.depthText.color = new Color(255, 255, 255, 1);
+                        }
                     }
                 }
                 return true;
