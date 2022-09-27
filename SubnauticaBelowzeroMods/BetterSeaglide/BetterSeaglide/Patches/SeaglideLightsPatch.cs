@@ -5,32 +5,33 @@ using Logger = QModManager.Utility.Logger;
 
 namespace BetterSeaglideBZ.Patches
 {
-    [HarmonyPatch(typeof(Seaglide))]
-    [HarmonyPatch("Update")]
-
+    [HarmonyPatch(typeof(ToggleLights), nameof(ToggleLights.Update))]
     internal class Seaglide_Update_Patch
     {
-        public static bool Prefix(Seaglide __instance)
+        public static bool Prefix(ToggleLights __instance)
         {
-            var seaGlide = __instance.toggleLights.GetComponentsInChildren<Light>();
-            var sgColor = __instance.GetAllComponentsInChildren<SkinnedMeshRenderer>();
-            var pickupablesgColor = __instance.GetAllComponentsInChildren<MeshRenderer>();
-            if (__instance.toggleLights.lightsParent != null)
+            if (__instance.lightsParent != null)
             {
-                if (seaGlide != null)
+                var sgLight = __instance.GetComponentsInChildren<Light>();
+                var sgColor = __instance.GetAllComponentsInChildren<SkinnedMeshRenderer>();
+                var pickupsgColor = __instance.GetAllComponentsInChildren<MeshRenderer>();
+                if (sgLight != null)
                 {
-                    foreach (var allLights in seaGlide)
+                    foreach (var allLights in sgLight)
                     {
+                        //ErrorMessage.AddDebug("Name: " + allLights.gameObject.name);
                         if (allLights.gameObject.name.Contains("Light"))
                         {
-                            /*Debug.Log($"" +
+                            /*ErrorMessage.AddDebug($"" +
                                 $"Color is {allLights.color}\n" +
                                 $"intensity is {allLights.intensity}\n" +
                                 $"range is {allLights.range}\n" +
-                                $"spotangle is {allLights.spotAngle}\n");*/
+                                $"spotangle is {allLights.spotAngle}\n" +
+                                $"ToggleColor is {MainPatch.ToggleColor}\n");*/
                             if (MainPatch.ToggleColor)
                             {
                                 allLights.color = MainPatch.FlashLightColor.LightToColor(true);
+                                //ErrorMessage.AddDebug("LightToColor: " + MainPatch.FlashLightColor.LightToColor(true));
                             }
                             else
                             {
@@ -55,37 +56,43 @@ namespace BetterSeaglideBZ.Patches
                         break;
                     }
                 }
-            }
-            foreach (var seaglideColor in sgColor)
-            {
-                if (seaglideColor.name.Contains("SeaGlide_geo"))
+                if (sgColor != null)
                 {
-                    if(MainPatch.SeaglideColor)
+                    foreach (var seaglideColor in sgColor)
                     {
-                        seaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(true);
+                        if (seaglideColor.name.Contains("SeaGlide_geo"))
+                        {
+                            if (MainPatch.SeaglideColor)
+                            {
+                                seaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(true);
+                            }
+                            else
+                            {
+                                seaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(false);
+                            }
+                            // Logger.Log(Logger.Level.Info, $"[LightColor] Color:{seaglideColor.material.color}  ");
+                            // seaglideColor.material.color = new Color(SeaglideConfig.seagliderValue, SeaglideConfig.seaglidegValue, SeaglideConfig.seaglidebValue, 1);
+                        }
                     }
-                    else
-                    {
-                        seaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(false);
-                    }
-                   // Logger.Log(Logger.Level.Info, $"[LightColor] Color:{seaglideColor.material.color}  ");
-                   // seaglideColor.material.color = new Color(SeaglideConfig.seagliderValue, SeaglideConfig.seaglidegValue, SeaglideConfig.seaglidebValue, 1);
                 }
-            }
-            foreach (var droppedseaglideColor in pickupablesgColor)
-            {
-                if (droppedseaglideColor.name.Contains("SeaGlide_01_TP"))
+                if(pickupsgColor != null)
                 {
-                    if (MainPatch.SeaglideColor)
+                    foreach (var droppedseaglideColor in pickupsgColor)
                     {
-                        droppedseaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(true);
+                        if (droppedseaglideColor.name.Contains("SeaGlide_01_TP"))
+                        {
+                            if (MainPatch.SeaglideColor)
+                            {
+                                droppedseaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(true);
+                            }
+                            else
+                            {
+                                droppedseaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(false);
+                            }
+                            //Logger.Log(Logger.Level.Info, $"[LightColor] DroppedColor:{droppedseaglideColor.material.color}  ");
+                            //droppedseaglideColor.material.color = new Color(SeaglideConfig.seagliderValue, SeaglideConfig.seaglidegValue, SeaglideConfig.seaglidebValue, 1);
+                        }
                     }
-                    else
-                    {
-                        droppedseaglideColor.material.color = MainPatch.SeaglideModelColor.ColorToColor(false);
-                    }
-                    //Logger.Log(Logger.Level.Info, $"[LightColor] DroppedColor:{droppedseaglideColor.material.color}  ");
-                    //droppedseaglideColor.material.color = new Color(SeaglideConfig.seagliderValue, SeaglideConfig.seaglidegValue, SeaglideConfig.seaglidebValue, 1);
                 }
             }
             return true;

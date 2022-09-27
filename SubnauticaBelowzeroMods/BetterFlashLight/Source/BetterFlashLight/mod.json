@@ -2,7 +2,7 @@
   "Id": "BetterFlashLight",
   "DisplayName": "Better FlashLight",
   "Author": "ihatetn931",
-  "Version": "1.0.1a",
+  "Version": "1.0.3",
   "Requires": [ "" ],
   "Enable": true,
   "Game": "BelowZero",

@@ -4,15 +4,14 @@ using UnityEngine;
 
 namespace BetterFlashLightBZ.Patches
 {
-    [HarmonyPatch(typeof(FlashLight))]
-    [HarmonyPatch("onLightsToggled")]
+    [HarmonyPatch(typeof(ToggleLights), nameof(ToggleLights.Update))]
     internal class FlashLight_onLightsToggled_Patch
     {
-        public static bool Prefix(FlashLight __instance)
+        public static bool Prefix(ToggleLights __instance)
         {
-            if (__instance.toggleLights.lightsParent != null)
+            if (__instance.lightsParent != null)
             {
-                var flashLight = __instance.toggleLights.lightsParent.GetComponentsInChildren<Light>();
+                var flashLight = __instance.lightsParent.GetComponentsInChildren<Light>();
                 if (flashLight != null)
                 {
                     foreach (var allLights in flashLight)

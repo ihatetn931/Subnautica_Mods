@@ -2,7 +2,7 @@
     "Id": "BetterSeaglide",
     "DisplayName": "Better Seaglide",
     "Author": "ihatetn931",
-    "Version": "2.0.1",
+    "Version": "2.0.2",
     "Requires": [ "" ],
     "Enable": true,
     "Game": "BelowZero",
